@@ -46,8 +46,16 @@ export async function sendNotification({ subject, text, html, replyTo }: Notific
       cache: "no-store",
     });
 
-    return response.ok;
-  } catch {
+    if (!response.ok) {
+      console.error("Brevo rejected a website notification", { status: response.status });
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Brevo notification request failed", {
+      errorType: error instanceof Error ? error.name : "UnknownError",
+    });
     return false;
   }
 }
