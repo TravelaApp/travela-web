@@ -1,9 +1,4 @@
-/**
- * Everything the site says about the product itself.
- *
- * Kept in one place so the contact details, the feature copy and the marketing claims
- * only ever have one source, and so nothing here drifts from what the app actually does.
- */
+/** Everything the site says about the product: one source for contact details, feature copy and marketing claims, so nothing drifts from the app. */
 
 export const site = {
   name: "Travela",

@@ -9,12 +9,7 @@ import { Icon } from "@/components/icons";
 type CategoryFilter = Category | "all";
 type CountyFilter = number | "all";
 
-/**
- * The full list, filtered in the browser.
- *
- * The whole set is already on the page, so filtering is instant and works with the
- * network switched off, which is the same bargain the app makes.
- */
+/** The full list, filtered in the browser: instant, and it works offline. */
 export function DestinationExplorer() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<CategoryFilter>("all");

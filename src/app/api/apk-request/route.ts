@@ -26,10 +26,7 @@ function escapeHtml(value: string) {
   });
 }
 
-/**
- * Takes a request for the Android build and forwards it to support. The reply
- * address is the requester's, so answering is a single click.
- */
+/** Forwards a request for the Android build to support, with the requester as the reply address. */
 export async function POST(request: Request) {
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
 

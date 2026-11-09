@@ -7,14 +7,7 @@ import { contact } from "@/data/site";
 const BUTTON =
   "inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#e86000]";
 
-/**
- * Email as an action, without the dead end.
- *
- * A bare mailto: link only works when the device has a mail app set up. Where
- * there is none the click lands on an empty tab and the button looks broken, so
- * the address is copied to the clipboard instead, and shown next to the button
- * so it can also be read or selected by hand.
- */
+/** Email as an action without the dead end: a bare mailto: opens an empty tab when no mail app is set up, so the address is copied to the clipboard and shown for manual use. */
 export function EmailButton({
   label = "Copy email address",
   showAddress = true,

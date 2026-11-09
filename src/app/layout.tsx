@@ -8,10 +8,7 @@ import { contact, site, socials } from "@/data/site";
 import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-/**
- * Outfit carries the headings and Inter the body text. Both are variable fonts, self-hosted
- * by Next, and exposed as the variables globals.css already reads.
- */
+/** Outfit carries the headings and Inter the body; both are self-hosted variable fonts exposed as the CSS variables globals.css reads. */
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
@@ -47,10 +44,7 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * The site is light mode only, so the browser is told to keep form controls and the
- * address bar in the sand palette rather than following the phone's dark setting.
- */
+/** Light mode only: keep form controls and the address bar in the sand palette rather than following the phone's dark setting. */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -58,7 +52,7 @@ export const viewport: Viewport = {
   themeColor: "#fbf7ee",
 };
 
-/** Read by search engines rather than by people, so the site is understood as one product. */
+/** Structured data so search engines read the site as one product. */
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [

@@ -1,11 +1,6 @@
 import type { SVGProps } from "react";
 
-/**
- * One small stroke icon set for the whole site.
- *
- * Drawn inline rather than pulled from an icon library so the site has no icon
- * dependency and every glyph inherits the surrounding text colour.
- */
+/** One small stroke icon set, drawn inline so there is no icon dependency and glyphs inherit the text colour. */
 export type IconName =
   | "map"
   | "offline"

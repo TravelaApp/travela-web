@@ -1,11 +1,4 @@
-/**
- * The checks every public write endpoint runs before it does anything else.
- *
- * Both the app request and the contact form accept text from strangers, so the
- * order is fixed: confirm the call came from this site, confirm the body is the
- * shape and size we expect, confirm the caller is not flooding us, and only then
- * look at the content.
- */
+/** The front-door checks every public write endpoint runs: same-origin, body shape and size, rate limit, then content. */
 
 const DEFAULT_MAX_BYTES = 4_096;
 
@@ -35,11 +28,7 @@ export interface RateLimit {
   limit: number;
 }
 
-/**
- * A fixed-window counter held in memory. Enough to stop a script hammering a
- * form from one address; a shared store is only worth adding once more than one
- * instance is handling traffic.
- */
+/** In-memory fixed-window counter: enough to stop one address hammering a form; a shared store only matters with multiple instances. */
 export function createRateLimiter({ windowMs, limit }: RateLimit) {
   const buckets = new Map<string, { count: number; resetAt: number }>();
 
@@ -124,10 +113,7 @@ type GuardResult =
   | { ok: true; data: Record<string, unknown>; address: string }
   | { ok: false; response: Response };
 
-/**
- * Runs the shared front-door checks and hands back a parsed body, or the
- * response to send instead. Callers never touch the raw request themselves.
- */
+/** Runs the shared checks and returns a parsed body, or the response to send instead. */
 export async function guardJsonRequest(
   request: Request,
   consume: ReturnType<typeof createRateLimiter>,
@@ -194,11 +180,7 @@ export function isValidEmail(value: string) {
   return value.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && !/[\r\n]/.test(value);
 }
 
-/**
- * Returns the trimmed value only when it is a single line within the limit.
- * An empty optional field comes back as an empty string; a required one comes
- * back as null so the caller can reject it.
- */
+/** Returns the trimmed single-line value within the limit; an empty optional field comes back as "", a missing required one as null. */
 export function readText(value: unknown, maxLength: number, { required = false } = {}) {
   if (typeof value !== "string") return required ? null : "";
 

@@ -1,13 +1,6 @@
 /**
- * The places shown on this site.
- *
- * This is the app's own destination content, so the names, one-line summaries, best
- * months, practical tips and coordinates of the story all match what a user sees in
- * Travela. The app carries the full list (188 places); the site carries the highlights,
- * which is why every list here is labelled as a selection rather than a total.
- *
- * Photographs are the ones the app bundles: real pictures of the real place, resolved
- * from Wikimedia Commons at build time in the app, and reused here unchanged.
+ * The app's own destination content, so the copy and photos match what a user sees in Travela.
+ * The app carries the full list (188 places); the site carries highlights, so lists here are selections, not totals.
  */
 
 export type Category =

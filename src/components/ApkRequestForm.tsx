@@ -11,10 +11,7 @@ import { useSecureForm } from "@/lib/useSecureForm";
 const FIELD =
   "mt-2 min-h-12 w-full rounded-2xl border border-line bg-sand/50 px-4 text-sm outline-none transition-colors placeholder:text-muted/70 focus:border-ink";
 
-/**
- * The download request form. The build is not on the Play Store yet, so this is
- * the front door: leave an address, and support replies with the file.
- */
+/** The download request form: not on the Play Store yet, so a request here gets the build by email. */
 export function ApkRequestForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const { token, setToken, resetSignal, status, message, failed, submit } =

@@ -3,12 +3,7 @@ import Link from "next/link";
 import { CATEGORIES, type Destination } from "@/data/destinations";
 import { countyById } from "@/data/counties";
 
-/**
- * A place, as a card.
- *
- * When the app has no convincing photograph of a place, the card falls back to its
- * category tint rather than borrowing a picture of somewhere else.
- */
+/** A place, as a card. Without a convincing photo it falls back to the category tint rather than borrowing a picture of somewhere else. */
 export function DestinationCard({ destination }: { destination: Destination }) {
   const meta = CATEGORIES[destination.category];
   const county = countyById(destination.countyId);

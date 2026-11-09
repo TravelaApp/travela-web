@@ -17,11 +17,7 @@ const COMPANY = [
   { href: "/terms", label: "Terms" },
 ] as const;
 
-/**
- * Read once when this module loads rather than on every render. The copyright year only
- * changes when the site is rebuilt, and reading the clock during a render is not allowed
- * while pages are being prerendered.
- */
+/** Read once at module load: the year only changes on rebuild, and reading the clock during prerender is not allowed. */
 const YEAR = new Date().getFullYear();
 
 export function Footer() {

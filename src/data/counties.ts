@@ -1,10 +1,4 @@
-/**
- * The 47 counties of Kenya, in the same shape the app uses: `id` is the official
- * county code, which is also the open-data code and the id used inside the app.
- *
- * `knownFor` is copied from the app's county passport so a visitor sees the same
- * reason to travel that a user of the app sees.
- */
+/** The 47 counties of Kenya in the app's shape: `id` is the official county code and `knownFor` mirrors the app's passport. */
 
 export type Region =
   | "Coast"

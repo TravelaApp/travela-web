@@ -2,11 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-/**
- * The card shown when the site is shared on WhatsApp, X or anywhere else that
- * reads Open Graph tags. Built here rather than drawn by hand, so the copy stays
- * in step with the site.
- */
+/** The card shown when the site is shared, built here so the copy stays in step with the site. */
 export const alt = "Travela is the free Android travel app for Kenya and all 47 counties";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

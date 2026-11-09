@@ -28,10 +28,7 @@ const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 /** False when no challenge key is configured, so forms can offer email instead. */
 export const turnstileEnabled = SITE_KEY.length > 0;
 
-/**
- * Cloudflare's invisible-friendly challenge. The token it produces is single
- * use, so the parent bumps `resetSignal` after every attempt to arm a new one.
- */
+/** Cloudflare's challenge. The token is single use, so the parent bumps `resetSignal` after every attempt to arm a new one. */
 export function TurnstileWidget({
   action,
   onToken,

@@ -2,14 +2,12 @@ import type { NextConfig } from "next";
 import { loadEnvConfig } from "@next/env";
 import { resolve } from "node:path";
 
-// Keep the existing single, git-ignored workspace .env usable for local website development.
-// Production secrets should be configured in the hosting provider, never bundled into the client.
+// Load the workspace .env in development only; production secrets belong in the host.
 if (process.env.NODE_ENV === "development") {
   loadEnvConfig(resolve(process.cwd(), ".."), true);
 }
 
-// React's development build reconstructs call stacks with eval(), so the dev
-// server has to allow it. Production never uses eval, so it never gets it.
+// React's dev build needs eval() for call stacks; production never gets it.
 const isDevelopment = process.env.NODE_ENV === "development";
 
 const contentSecurityPolicy = [
@@ -31,9 +29,7 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   // Do not advertise the framework on every response.
   poweredByHeader: false,
-  // Development only. Next 16 blocks cross-site requests to its own internal endpoints, which
-  // stops a phone on the office network loading the dev server. These private ranges are let
-  // through so the layout can be checked on a real screen without a rebuild.
+  // Let phones on a private LAN reach the dev server.
   allowedDevOrigins: ["192.168.*.*", "10.*.*.*"],
   // The full URL of a fetch makes a stale cache or a wrong endpoint obvious in development.
   logging: {
@@ -45,8 +41,7 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     qualities: [60, 75],
     minimumCacheTTL: 60 * 60 * 24 * 30,
-    // The app bundles photographs resolved from Wikimedia Commons, and the site reuses the
-    // same URLs rather than shipping a second set of copies.
+    // Reuse the app's Wikimedia-hosted photos rather than shipping copies.
     remotePatterns: [
       { protocol: "https", hostname: "upload.wikimedia.org" },
       { protocol: "https", hostname: "thumb.wikimedia.org" },
@@ -78,9 +73,7 @@ const nextConfig: NextConfig = {
       });
     }
 
-    // Everything under public is otherwise served with a zero lifetime and refetched on every
-    // visit. A day of freshness with a long stale-while-revalidate window keeps a repeat visit
-    // instant without pinning an image that gets replaced later.
+    // public assets: a day fresh with a long stale-while-revalidate window.
     const cachedAssetHeaders = [
       { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
     ];

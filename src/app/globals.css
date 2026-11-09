@@ -1,10 +1,6 @@
 @import "tailwindcss";
 
-/*
- * Travela's palette, taken straight from the app (src/lib/colors.ts):
- * sand background, black ink, orange for the action, leaf green for progress.
- * Light mode only, by design.
- */
+/* Travela's palette, taken straight from the app (src/lib/colors.ts). Light mode only, by design. */
 @theme {
   --color-sand: #fbf7ee;
   --color-sand-deep: #eae0c9;
@@ -56,11 +52,7 @@
   }
 }
 
-/*
- * The app-screens row drifts on its own. The list is laid out twice and the track
- * slides exactly one copy, so the loop has no visible seam. Hovering or tabbing in
- * pauses it, and reduced-motion visitors get a row they can scroll themselves.
- */
+/* The app-screens row drifts on its own: a seamless loop that pauses on hover or focus, and a plain scrollable row under prefers-reduced-motion. */
 .marquee {
   mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);

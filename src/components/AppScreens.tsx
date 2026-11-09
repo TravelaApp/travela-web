@@ -3,17 +3,7 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { SectionHeading } from "@/components/ui";
 
-/**
- * The app itself, captured on a phone.
- *
- * The originals are 1320x2868 in assets/images/screenshots; the copies in
- * public/screenshots are pre-sized to 640x1391, so a phone only downloads what it
- * can actually display.
- *
- * The row drifts left on its own. The list is laid out twice and the track slides
- * exactly one copy, which is what makes the loop seamless; the movement, the pause
- * and the reduced-motion fallback all live in globals.css.
- */
+/** The app captured on a phone. Screens are pre-sized to 640x1391; the row is laid out twice and slides one copy for a seamless loop (movement lives in globals.css). */
 const SCREEN_WIDTH = 640;
 const SCREEN_HEIGHT = 1391;
 

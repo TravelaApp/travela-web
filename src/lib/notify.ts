@@ -1,15 +1,11 @@
 import { contact } from "@/data/site";
 
 /**
- * Outbound mail for the site's own forms, sent through Brevo's HTTP API so the
- * site never needs an SMTP connection and the key stays on the server.
+ * Outbound mail for the site's own forms, sent through Brevo's HTTP API so the key stays on the server.
  *
- * Brevo's "Authorised IPs" setting must stay off. The site runs where the outbound
- * address changes (serverless egress, or a home connection during testing), so any
- * fixed allow-list will fail the day the address changes and take the forms with it.
- * The key is protected by living only on the server and never reaching the browser,
- * and every route that uses it is behind the Turnstile check, a same-origin check
- * and a rate limit in src/lib/security.ts.
+ * Brevo's "Authorised IPs" must stay off: the outbound address changes (serverless egress or a home
+ * connection), so a fixed allow-list would break the forms. Every route using this is behind the
+ * Turnstile, same-origin and rate-limit checks in src/lib/security.ts.
  */
 
 export function notificationsConfigured() {

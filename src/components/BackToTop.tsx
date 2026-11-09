@@ -6,10 +6,7 @@ import { Icon } from "@/components/icons";
 /** How far down the page, in pixels, before the button shows itself. */
 const SHOW_AFTER = 600;
 
-/**
- * A quiet shortcut back to the top, on every page. It stays out of the way until
- * you have scrolled past the first screen, then fades in over the bottom corner.
- */
+/** A quiet back-to-top button that fades in after the first screen. */
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
 
