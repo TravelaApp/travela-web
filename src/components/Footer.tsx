@@ -7,7 +7,7 @@ const EXPLORE = [
   { href: "/destinations", label: "Destinations" },
   { href: "/counties", label: "The 47 counties" },
   { href: "/features", label: "What is inside" },
-  { href: "/download", label: "Get the app" },
+  { href: "/download", label: "Join the waitlist" },
 ] as const;
 
 const COMPANY = [
@@ -15,6 +15,7 @@ const COMPANY = [
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
+  { href: "/account-deletion", label: "Delete your account" },
 ] as const;
 
 /** Read once at module load: the year only changes on rebuild, and reading the clock during prerender is not allowed. */

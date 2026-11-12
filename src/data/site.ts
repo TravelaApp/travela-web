@@ -29,13 +29,13 @@ export const partner = {
     "Local tour guides for safaris and city tours. Trips are tailored to what you want to see, anywhere in the 47 counties.",
 } as const;
 
-/** The facts a person needs before installing, all of them true today. */
+/** The facts a person needs before the app lands on Google Play, all of them true today. */
 export const download = {
   platform: "Android",
   requirement: "Android 8.0 or newer",
   size: "around 100 MB",
   price: "Free",
-  status: "Direct download while the Play Store listing is prepared",
+  store: "Google Play",
 } as const;
 
 /** Plain-language privacy, for the person using the app rather than for a lawyer. */

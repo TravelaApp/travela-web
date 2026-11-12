@@ -5,7 +5,7 @@ import { DestinationCard } from "@/components/DestinationCard";
 import { Icon } from "@/components/icons";
 import { SectionHeading, Stat } from "@/components/ui";
 import { COUNTIES, REGION_ORDER, countiesInRegion, regionCount } from "@/data/counties";
-import { APP_DESTINATION_COUNT, DESTINATIONS, destinationById } from "@/data/destinations";
+import { APP_DESTINATION_COUNT, destinationById, gems } from "@/data/destinations";
 import { badges, contact, download, features, levels, partner, site, stats } from "@/data/site";
 import { siteUrl } from "@/lib/site-url";
 
@@ -35,6 +35,9 @@ const FEATURED = [
 /** The homepage shows the shape of the app; the rest live on the features page. */
 const HIGHLIGHTS = features.slice(0, 6);
 const PHOTO_HIGHLIGHTS = FEATURED.filter((destination) => destination.photo).slice(0, 3);
+
+/** The other half of the pitch: the quiet places most people drive straight past. */
+const GEMS = gems().slice(0, 4);
 
 const INSTALL_FACTS = [
   { label: "Cost", value: download.price },
@@ -80,7 +83,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-ink/85"
             >
               <Icon name="download" className="h-4 w-4" />
-              Get the app
+              Join the waitlist
             </Link>
             <Link
               href="/destinations"
@@ -205,14 +208,36 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16">
         <SectionHeading
-          title="Places travellers love"
-          body={`A handful of favourites from the Mara to the reef. The app carries all ${APP_DESTINATION_COUNT}.`}
+          title="Hidden gems"
+          body="The places most people drive past on the way somewhere else. Quiet, cheap and worth the detour."
           action={
             <Link
               href="/destinations"
               className="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold transition-colors hover:border-ink"
             >
-              All {DESTINATIONS.length} featured places
+              See the hidden gems
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+          }
+        />
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {GEMS.map((destination) => (
+            <DestinationCard key={destination.id} destination={destination} />
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <SectionHeading
+          title="Popular right now"
+          body={`The favourites people plan a whole trip around. The app carries all ${APP_DESTINATION_COUNT} places.`}
+          action={
+            <Link
+              href="/destinations"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold transition-colors hover:border-ink"
+            >
+              Browse every place
               <Icon name="arrow" className="h-4 w-4" />
             </Link>
           }
@@ -380,19 +405,19 @@ export default function HomePage() {
             <div>
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold">
                 <Icon name="download" className="h-4 w-4" />
-                Free on {download.platform}
+                Launching on {download.store}
               </div>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Take the whole country with you</h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70">
-                Leave your email and we send the current build with the two steps to install it. It takes a minute and
-                it keeps working where the signal stops.
+                Leave your email and we tell you the day the app lands on {download.store}. Every county, every place
+                and the whole passport, ready to work where the signal stops.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="/download"
                   className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#e86000]"
                 >
-                  Get the app
+                  Join the waitlist
                   <Icon name="arrow" className="h-4 w-4" />
                 </Link>
                 <Link

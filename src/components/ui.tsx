@@ -26,7 +26,7 @@ export function AppCta({
               href="/download"
               className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#e86000]"
             >
-              Get the app
+              Join the waitlist
               <Icon name="arrow" className="h-4 w-4" />
             </Link>
             <Link

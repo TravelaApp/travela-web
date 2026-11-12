@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CATEGORIES, type Destination } from "@/data/destinations";
+import { CATEGORIES, GEM_IDS, type Destination } from "@/data/destinations";
 import { countyById } from "@/data/counties";
 
 /** A place, as a card. Without a convincing photo it falls back to the category tint rather than borrowing a picture of somewhere else. */
 export function DestinationCard({ destination }: { destination: Destination }) {
   const meta = CATEGORIES[destination.category];
   const county = countyById(destination.countyId);
+  const isGem = GEM_IDS.includes(destination.id);
 
   return (
     <Link
@@ -41,6 +42,11 @@ export function DestinationCard({ destination }: { destination: Destination }) {
         >
           {meta.label}
         </span>
+        {isGem && (
+          <span className="absolute right-3 top-3 rounded-full bg-gold-soft px-2.5 py-1 text-[11px] font-semibold text-ink shadow-sm ring-1 ring-gold/25">
+            Hidden gem
+          </span>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-5">

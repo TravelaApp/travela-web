@@ -1,77 +1,183 @@
 import type { Metadata } from "next";
-import { Icon } from "@/components/icons";
-import { AppCta, PageHeader } from "@/components/ui";
+import { LegalDocument, type LegalSection } from "@/components/LegalDocument";
+import { AppCta } from "@/components/ui";
 import { contact } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Privacy",
+  title: "Privacy Policy",
   description:
-    "What Travela stores and never collects plus how to have your account and its data deleted.",
+    "How Travela handles your data in the app and on this website, what we collect and why, who else is involved, and how to see, fix or delete it.",
 };
 
-const SECTIONS = [
+const SECTIONS: LegalSection[] = [
   {
-    icon: "users" as const,
-    title: "Your account",
-    body: [
-      "To use Travela you sign in with an email address or with Google. We hold that email address on the account.",
-      "If you add a display name or a profile picture those are stored too so they follow you to a new phone. If you never add them there is nothing to store.",
-      "Your password is handled by our sign-in provider and is never visible to us.",
+    id: "who-we-are",
+    heading: "Who we are",
+    paragraphs: [
+      "Travela is a free travel app for Kenya. It covers all 47 counties and 188 places, and it keeps working when you lose signal.",
+      "For data protection, Travela is the controller of the personal data described here. That means we decide why it is used and how it is handled.",
+      `We are based in ${contact.location}. You can reach us at ${contact.email} or on ${contact.phone}.`,
     ],
   },
   {
-    icon: "stamp" as const,
-    title: "Your progress",
-    body: [
-      "The counties you stamp and the trips you plan and everything you save along the way belong to your account. That is what makes progress survive a phone change.",
-      "If you never sign in, this stays on the device and is not sent anywhere.",
+    id: "what-we-collect",
+    heading: "What we collect and why",
+    paragraphs: [
+      "We keep this short. We collect what the app needs to work for you and nothing more.",
+      "Account details. When you create an account you give us an email address. You can also add a display name and a profile picture. We use these to sign you in and to keep your progress as yours. Accounts are made with an email address or with Google, and there is one account per email address.",
+      "Your progress. Visits and stamps, trips and their stops, favourites, badges and experience are saved to your account. This is what lets your progress follow you to a new phone. If you never sign in, this stays on the device and is not sent anywhere.",
+      "Photos and notes. If you attach a photo or a note to a trip, it is stored with your account. If you attach nothing, we store nothing.",
+      "These are the other things we collect, each read only in the moment it is needed.",
+    ],
+    bullets: [
+      "Location: read only at the moment you ask for what is nearby, and used to sort the list. It is not stored and there is no background tracking.",
+      "Error reports: if the app hits a problem it can send a short report to our email. Tokens, passwords, one time codes and personal identifiers are masked before the report leaves your device.",
+      "Waitlist (website): if you join the waitlist we collect your email address and, if you give them, your name and a county you are interested in.",
+      "Website contact form: your name, your email address and your message, so we can reply.",
     ],
   },
   {
-    icon: "pin" as const,
-    title: "Location",
-    body: [
-      "Travela reads your location only at the moment you ask it to show what is near you.",
-      "There is no background location tracking. The app does not follow you and it does not keep a history of where you have been.",
+    id: "how-we-use-it",
+    heading: "How we use it",
+    paragraphs: [
+      "We use your data only to run Travela for you. We do not use it for advertising, and we do not sell or rent it. There is no ad network in the app.",
+      "The specific uses are:",
+    ],
+    bullets: [
+      "To create and run your account and let you sign in.",
+      "To store your progress, photos and notes so they come back when you sign in on another device.",
+      "To show places, counties and events that fit what you set.",
+      "To send one launch email if you joined the waitlist.",
+      "To send account email such as confirmation and password resets.",
+      "To keep the service secure, stop spam and abuse, and fix faults.",
+      "To understand, in aggregate, how the website is used so we can improve it.",
     ],
   },
   {
-    icon: "book" as const,
-    title: "Photos and notes",
-    body: [
-      "Photographs and notes you attach to a trip are stored with your account so they come back when you sign in elsewhere.",
-      "They are yours. We do not use them for anything else.",
+    id: "legal-basis",
+    heading: "Our legal basis",
+    paragraphs: [
+      "Kenya's Data Protection Act 2019 requires us to have a lawful reason before we use your data. We rely on three.",
+      "Consent. We ask you first before reading your location, before adding you to the waitlist, before sending notifications and before you add optional profile details. You can withdraw consent at any time.",
+      "Performance of a contract. We need your email address and your progress to give you the account you asked for and to keep it working across devices.",
+      "Legitimate interests. We use a small amount of data to keep Travela secure, to prevent abuse and spam, and to fix faults, in ways that do not override your rights.",
+      "In plain terms: if we do not have one of these reasons, we do not use your data.",
     ],
   },
   {
-    icon: "calendar" as const,
-    title: "Events",
-    body: [
-      "Event listings are collected from public sources and sorted against the interests you choose.",
-      "They are somebody else's listing. If an event has moved or been cancelled the organiser's own page is the final word. Following a link to it takes you off Travela.",
+    id: "waitlist",
+    heading: "The waitlist",
+    paragraphs: [
+      "This website has a waitlist for people who want to hear when the app is ready.",
+      "If you join, we collect your email address and, if you choose to give them, your name and a county you are interested in. We store them with Brevo, our email provider, and we use them to send you one launch email.",
+      "We do not add you to any other list. You can ask us to take you off at any time by writing to us or calling us, and we will remove you. Once the launch email has gone, we delete waitlist details within 30 days.",
     ],
   },
   {
-    icon: "external" as const,
-    title: "Sharing trips",
-    body: [
-      "When you export a trip as a PDF that file goes wherever you send it. Sharing is something you do deliberately and it leaves the app at your request.",
+    id: "third-parties",
+    heading: "Who else is involved",
+    paragraphs: [
+      "A few trusted providers help us run Travela. Here is what each one receives.",
+    ],
+    bullets: [
+      "Supabase holds accounts and app data. It receives your email address, your optional display name and profile picture, and your progress, photos and notes. It also handles sign in.",
+      "Google sign in. If you choose to continue with Google, Google confirms who you are and passes your name, email address and profile picture to us. Google does not receive your trips, photos or notes.",
+      "Brevo sends account and notification email and holds the waitlist. It receives your email address and, if you gave them, your waitlist name and county.",
+      "Vercel hosts this website. It processes the requests that reach the site. Vercel Analytics records aggregate page views and does no advertising.",
+      "Cloudflare Turnstile guards the website forms against spam. It receives the signals it needs to tell a person from a bot.",
+      "Google Play distributes the Android app. Google handles the download and the device and account data involved in running Play, under Google's own privacy policy.",
     ],
   },
   {
-    icon: "shield" as const,
-    title: "What we do not do",
-    body: [
-      "No adverts. No ad networks. Nothing about you is sold or rented.",
-      "No location history. No contact list upload. Nothing read from your phone that you did not put into the app.",
+    id: "cookies-and-analytics",
+    heading: "Cookies and analytics",
+    paragraphs: [
+      "The website uses a small amount of cookie or similar storage. Vercel Analytics records aggregate page views without cookies and without advertising, so it cannot follow you around the web. Cloudflare Turnstile may use a cookie to tell people from bots before a form is sent.",
+      "The app has no advertising cookies. It keeps your sign in session on the device so you do not have to sign in every time, and signing out removes that session.",
+      "You can block or clear cookies in your browser. Reading the website will still work; some forms may need the spam check to pass.",
     ],
   },
   {
-    icon: "check" as const,
-    title: "Keeping it and deleting it",
-    body: [
-      "Your data is kept for as long as your account exists.",
-      `To have your account and its data deleted, write to ${contact.email} from the email address on the account or call ${contact.phone}. We will delete it and confirm when it is done.`,
+    id: "retention",
+    heading: "How long we keep it",
+    paragraphs: [
+      "We keep each kind of data only as long as we need it. When your account is deleted, a copy may briefly remain in an encrypted backup before it is overwritten on our normal cycle.",
+    ],
+    bullets: [
+      "Account and profile: for as long as your account exists, then deleted within 30 days of a verified request.",
+      "Progress, including visits and stamps, trips and stops, favourites, badges and experience: for as long as your account exists, and deleted with it.",
+      "Photos and notes: for as long as your account exists, or until you remove them, whichever is sooner.",
+      "Location: not stored at all.",
+      "Waitlist details: until the launch email has gone, then deleted within 30 days, or sooner if you ask.",
+      "Error reports: kept for no more than 90 days.",
+      "Website analytics: aggregate only and not tied to you.",
+    ],
+  },
+  {
+    id: "international-transfers",
+    heading: "Where your data is held",
+    paragraphs: [
+      "Some of our providers, including Supabase, Vercel, Brevo, Google and Cloudflare, operate globally. Your data may be stored or processed outside Kenya.",
+      "When data leaves Kenya we rely on the protections these providers put in place, such as encryption in transit and contractual safeguards. We only use providers we believe meet the standard Kenya's Data Protection Act expects for a transfer abroad.",
+      "In plain terms: your data may sit on servers outside Kenya, but it stays protected and it is never ours to sell.",
+    ],
+  },
+  {
+    id: "security",
+    heading: "How we protect it",
+    paragraphs: [
+      "We take reasonable steps to keep your data safe. No system is perfect, and if we become aware of a breach that affects you we will tell you and the Office of the Data Protection Commissioner as the law requires.",
+    ],
+    bullets: [
+      "Passwords are handled by our sign in provider and are never visible to us.",
+      "Data is encrypted in transit between your device and our providers.",
+      "Your sign in session is stored on your device, and signing out removes it.",
+      "Before any error report leaves your device, we mask tokens, passwords, one time codes and personal identifiers.",
+      "Access to the data behind the app is limited to what is needed to run it.",
+    ],
+  },
+  {
+    id: "your-rights",
+    heading: "Your rights",
+    paragraphs: [
+      "Under Kenya's Data Protection Act 2019 you have the following rights. In plain terms: it is your data, and you can ask us to show it, fix it or delete it.",
+    ],
+    bullets: [
+      "Access: a copy of the personal data we hold about you.",
+      "Correction: put right anything that is wrong or out of date.",
+      "Deletion: close your account and remove the data in it.",
+      "Portability: get a copy of your data in a usable form to move it elsewhere.",
+      "Objection: object to a use based on our legitimate interests.",
+      "Withdrawal of consent: withdraw at any time, for example for location, notifications or the waitlist.",
+      `To do any of these, write to ${contact.email} from the email address on your account, or call ${contact.phone}. We will respond within 30 days and explain what we did in plain language.`,
+      "If you are not happy with how we handled your data, you can complain to the Office of the Data Protection Commissioner of Kenya, the ODPC, at odpc.go.ke.",
+    ],
+  },
+  {
+    id: "children",
+    heading: "Children",
+    paragraphs: [
+      "Travela is not meant for children. Under Kenya's Data Protection Act 2019 a child is anyone under 18, and we do not knowingly collect personal data from children.",
+      "If you are under 18, please use Travela only with the help of a parent or guardian. If we learn that a child has given us personal data, we will delete it. A parent or guardian can ask us to do this at any time using the contact details below.",
+    ],
+  },
+  {
+    id: "changes",
+    heading: "Changes to this policy",
+    paragraphs: [
+      "We may update this policy as the app and the law change. When we do, we change the version and the date at the top of this page and keep a short history below. If a change is significant we will make it clear on the site or in the app.",
+    ],
+    bullets: [
+      "Version 2.0, 12 November 2026: this full policy replaced the earlier short summary, adding the sections on legal basis, retention, transfers and your rights.",
+      "Version 1.0: the first privacy summary, published with the website.",
+    ],
+  },
+  {
+    id: "contact",
+    heading: "Contact us",
+    paragraphs: [
+      `Questions about your data, or a request to see, fix or delete it, can go to ${contact.email} or by phone on ${contact.phone}.`,
+      `We are Travela, based in ${contact.location}. If we cannot resolve your concern, you can raise it with the Office of the Data Protection Commissioner of Kenya at odpc.go.ke.`,
     ],
   },
 ];
@@ -79,56 +185,15 @@ const SECTIONS = [
 export default function PrivacyPage() {
   return (
     <>
-      <PageHeader
+      <LegalDocument
         eyebrow="Privacy"
         icon="shield"
-        title="What we store and what we do not"
-        intro="The short version. Your trips are yours. Nothing is sold and you can have everything removed whenever you ask."
+        title="Privacy Policy"
+        intro="How Travela handles your information, in plain language. This covers the Android app and this website."
+        updated="12 November 2026"
+        version="2.0"
+        sections={SECTIONS}
       />
-
-      <section className="mx-auto max-w-6xl px-5 pb-4">
-        <p className="text-xs uppercase tracking-[0.14em] text-muted">Last updated November 2026</p>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 pb-16">
-        <div className="grid gap-4 lg:grid-cols-2">
-          {SECTIONS.map((section) => (
-            <div key={section.title} className="rounded-3xl border border-line bg-surface p-6">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-sand text-ink">
-                  <Icon name={section.icon} />
-                </span>
-                <h2 className="text-base font-semibold">{section.title}</h2>
-              </div>
-              <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted">
-                {section.body.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 pb-8">
-        <div className="rounded-3xl border border-line bg-surface p-6 sm:p-8">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold">
-            <Icon name="mail" className="h-4 w-4" />
-            Questions about your data
-          </div>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
-            Write to{" "}
-            <a
-              href={`mailto:${contact.email}`}
-              className="underline decoration-line underline-offset-4 transition-colors hover:decoration-ink"
-            >
-              {contact.email}
-            </a>{" "}
-            or call {contact.phone} and we will answer in plain language.
-          </p>
-        </div>
-      </section>
-
       <AppCta />
     </>
   );

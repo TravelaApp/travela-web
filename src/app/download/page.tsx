@@ -1,30 +1,30 @@
 import type { Metadata } from "next";
-import { ApkRequestForm } from "@/components/ApkRequestForm";
+import { WaitlistForm } from "@/components/WaitlistForm";
 import { Icon } from "@/components/icons";
 import { AppCta, PageHeader, SectionHeading } from "@/components/ui";
-import { contact, download, socials } from "@/data/site";
+import { contact, socials } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Get the app",
+  title: "Join the waitlist",
   description:
-    "Get Travela for Android. Free to download and built to keep working without a signal with all 47 counties inside. Request the build and start stamping.",
+    "Travela is coming to Google Play. Join the waitlist and we will email you the moment the Android app is live, free and built to keep working without a signal.",
 };
 
 const STEPS = [
   {
-    icon: "download" as const,
-    title: "Ask for the build",
-    body: "Leave your email above. We send the current Android file and the two steps to install it.",
-  },
-  {
-    icon: "check" as const,
-    title: "Install it",
-    body: "Open the file on your phone. Android asks once for permission to install from this source which is normal outside the Play Store.",
-  },
-  {
     icon: "users" as const,
-    title: "Sign in once",
-    body: "Your account is what carries your stamps, trips and badges to a new phone.",
+    title: "Join the waitlist",
+    body: "Leave your email above. That is all we need to hold your place for launch.",
+  },
+  {
+    icon: "mail" as const,
+    title: "We email you at launch",
+    body: "The moment Travela goes live on Google Play, we send you the listing so you can install it in one tap.",
+  },
+  {
+    icon: "download" as const,
+    title: "Install from Google Play",
+    body: "No files to copy and no settings to change. Tap install and Android handles the rest.",
   },
   {
     icon: "stamp" as const,
@@ -44,15 +44,15 @@ export default function DownloadPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Get the app"
+        eyebrow="Join the waitlist"
         icon="download"
-        title="Travela, free on Android"
-        intro="Leave your email and we will send the current build with instructions. It takes a minute to install and it keeps working where the signal stops."
+        title="Travela is coming to Google Play"
+        intro="Leave your email and we will tell you the moment the Android app is live on Google Play. It is free, quick to install and it keeps working where the signal stops."
       />
 
       <section className="mx-auto max-w-6xl px-5 pb-16">
         <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <ApkRequestForm />
+          <WaitlistForm />
 
           <div className="space-y-4">
             <div className="rounded-4xl border border-line bg-surface p-7 sm:p-9">
@@ -68,24 +68,25 @@ export default function DownloadPage() {
             </div>
 
             <div className="rounded-4xl border border-line bg-sand-deep/50 p-7 sm:p-9">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-muted">Before you install</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-muted">Launch facts</h2>
               <dl className="mt-5 space-y-3 text-sm">
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-muted">Cost</dt>
-                  <dd className="font-medium">{download.price}</dd>
+                  <dd className="font-medium">Free</dd>
                 </div>
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-muted">Requires</dt>
-                  <dd className="font-medium">{download.requirement}</dd>
+                  <dd className="font-medium">Android 8.0 or newer</dd>
                 </div>
                 <div className="flex items-center justify-between gap-4">
-                  <dt className="text-muted">Download size</dt>
-                  <dd className="font-medium">{download.size}</dd>
+                  <dt className="text-muted">Adverts</dt>
+                  <dd className="font-medium">None</dd>
                 </div>
               </dl>
 
               <p className="mt-6 border-t border-line pt-5 text-xs leading-relaxed text-muted">
-                iPhone is not supported yet. Follow{" "}
+                The Google Play listing is being prepared, so there is no link to share yet. iPhone is not supported.
+                Follow{" "}
                 {socials.map((social, index) => (
                   <span key={social.label}>
                     {index > 0 && " and "}
@@ -108,12 +109,12 @@ export default function DownloadPage() {
               <p className="mt-4 text-sm leading-relaxed text-muted">
                 Call {contact.phone} or write to{" "}
                 <a
-                  href={`mailto:${contact.email}?subject=Travela%20Android%20build`}
+                  href={`mailto:${contact.email}?subject=Travela%20waitlist`}
                   className="underline decoration-line underline-offset-4 transition-colors hover:decoration-ink"
                 >
                   {contact.email}
                 </a>
-                . We are in {contact.location}.
+                . We will answer personally.
               </p>
             </div>
           </div>
@@ -121,7 +122,10 @@ export default function DownloadPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 pb-16">
-        <SectionHeading title="From request to first stamp" body="Four steps and none of them need a laptop." />
+        <SectionHeading
+          title="From the waitlist to your first stamp"
+          body="Four steps and none of them need a laptop."
+        />
 
         <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, index) => (

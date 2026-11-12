@@ -14,6 +14,7 @@ const PAGES: Array<{ path: string; priority: number }> = [
   { path: "/contact", priority: 0.6 },
   { path: "/privacy", priority: 0.3 },
   { path: "/terms", priority: 0.3 },
+  { path: "/account-deletion", priority: 0.3 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

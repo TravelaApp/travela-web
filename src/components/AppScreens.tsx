@@ -40,7 +40,7 @@ export function AppScreens() {
             href="/download"
             className="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink/85"
           >
-            Get the app
+            Join the waitlist
             <Icon name="arrow" className="h-4 w-4" />
           </Link>
         }

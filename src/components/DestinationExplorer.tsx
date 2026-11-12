@@ -98,7 +98,7 @@ export function DestinationExplorer() {
       <div className="mt-6 flex items-center justify-between text-sm text-muted">
         <p>
           {results.length} {results.length === 1 ? "place" : "places"}
-          {filtered ? ` of ${DESTINATIONS.length}` : " to see"}
+          {filtered ? ` found, from the ${DESTINATIONS.length} on this site` : " on this site"}
         </p>
         {filtered && (
           <button

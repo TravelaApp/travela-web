@@ -89,6 +89,23 @@ const nextConfig: NextConfig = {
         : []),
     ];
   },
+  // One host to rank and be linked to; the others point at it. Vercel needs both hosts attached to the project for these to fire.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "travela.app" }],
+        destination: "https://travelaapp.co.ke/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.travelaapp.co.ke" }],
+        destination: "https://travelaapp.co.ke/:path*",
+        permanent: true,
+      },
+    ];
+  },
   turbopack: {
     rules: {
       "*.css": {

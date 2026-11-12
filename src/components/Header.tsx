@@ -56,7 +56,7 @@ export function Header() {
             href="/download"
             className="hidden items-center gap-2 rounded-full bg-gold px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e86000] sm:inline-flex"
           >
-            Get the app
+            Join the waitlist
             <Icon name="arrow" className="h-4 w-4" />
           </Link>
 
@@ -91,7 +91,7 @@ export function Header() {
             onClick={() => setOpen(false)}
             className="mt-3 flex items-center justify-center gap-2 rounded-full bg-gold px-4 py-3 text-sm font-semibold text-white"
           >
-            Get the app
+            Join the waitlist
             <Icon name="arrow" className="h-4 w-4" />
           </Link>
         </div>

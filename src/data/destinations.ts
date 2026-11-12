@@ -117,10 +117,20 @@ export const DESTINATIONS: Destination[] = [
     duration: "1 to 2 hrs",
     experiences: ["Guided ruin tour", "Forest walk", "Museum"],
   }),
+  d(3, "kilifi-arabuko-sokoke", "Arabuko-Sokoke Forest", "forest", "The largest coastal forest in East Africa: home to the golden-rumped elephant shrew.", {
+    experiences: ["Birdwatching", "Night walk", "Cycling trails"],
+  }),
   d(5, "lamu-old-town", "Lamu Old Town", "cultural", "The oldest living Swahili settlement in East Africa where the only traffic is donkeys and dhows.", {
     photo: `${t}/6/6a/Above_view_of_the_town_of_Lamu.jpg/1280px-Above_view_of_the_town_of_Lamu.jpg`,
     best: "Jun to Oct",
     experiences: ["Donkey town walk", "Dhow sunset sail", "Swahili cooking"],
+  }),
+  d(5, "lamu-shela", "Shela Village & Beach", "beach", "The quiet end of the island, with a long empty beach and rooftop guesthouses.", {
+    entry: "Free",
+    experiences: ["Beach walk", "Dhow racing", "Rooftop sunsets"],
+  }),
+  d(5, "lamu-takwa-ruins", "Takwa Ruins", "historic", "A ruined Swahili town on Manda Island, reachable only by boat.", {
+    experiences: ["Boat trip", "Ruins walk", "Picnic on the beach"],
   }),
   d(6, "taita-tsavo-east", "Tsavo East National Park", "park", "The great red-elephant country where the land runs vast and wild.", {
     best: "Jun to Oct",
@@ -133,6 +143,9 @@ export const DESTINATIONS: Destination[] = [
   d(6, "taita-mzima-springs", "Mzima Springs", "lake", "Crystal water welling up from below the lava, clear enough to watch hippos walk.", {
     duration: "1 hr",
     experiences: ["Underwater observatory", "Hippo and crocodile viewing"],
+  }),
+  d(6, "taita-lake-chala", "Lake Chala", "lake", "A deep crater lake on the Tanzania border with steep forested walls.", {
+    experiences: ["Crater rim hike", "Kayaking", "Camping"],
   }),
   d(4, "tana-river-kora-np", "Kora National Park", "park", "Remote acacia wilderness on the Tana where George Adamson lived among lions.", {
     best: "Jun to Oct",
@@ -206,6 +219,10 @@ export const DESTINATIONS: Destination[] = [
     photo: `${t}/6/64/Dry_river%2C_Kitui_County%2C_Kenya.jpg/1280px-Dry_river%2C_Kitui_County%2C_Kenya.jpg`,
     experiences: ["Hiking", "Rock climbing", "Views"],
   }),
+  d(15, "kitui-south-kitui-national-reserve", "South Kitui National Reserve", "wildlife", "A remote eastern reserve of dry bush and rocky kopjes, with elephant and lion.", {
+    duration: "Half day",
+    experiences: ["Game viewing", "Birdwatching"],
+  }),
   d(16, "machakos-ol-donyo-sabuk", "Ol Donyo Sabuk National Park", "hike", "A single forested mountain rising out of the plains, with buffalo on its slopes.", {
     duration: "Half day",
     experiences: ["Summit hike", "Game viewing", "Views to Kilimambogo"],
@@ -244,6 +261,10 @@ export const DESTINATIONS: Destination[] = [
   d(21, "muranga-ndakaini-dam", "Ndakaini Dam", "lake", "The reservoir that supplies most of Nairobi's water, set among tea farms in Gatanga.", {
     experiences: ["Dam viewpoint", "Scenic drive"],
   }),
+  d(21, "muranga-kanunga-falls", "Kanunga Falls", "viewpoint", "A hidden waterfall near Ndakaini in Gatanga, on an easy trail through the farms.", {
+    duration: "2 to 3 hrs",
+    experiences: ["Waterfall hike", "Freshwater pools"],
+  }),
   d(22, "kiambu-fourteen-falls", "Fourteen Falls", "viewpoint", "Fourteen cascades on the Chania river that run strongest after the long rains.", {
     photo: `${t}/c/c6/Fourteen_Falls.jpg/1280px-Fourteen_Falls.jpg`,
     experiences: ["Falls viewpoint", "Boat ride to the base", "Picnic"],
@@ -267,6 +288,14 @@ export const DESTINATIONS: Destination[] = [
     duration: "Multi-day",
     experiences: ["Trekking", "Camping", "Nature walk"],
   }),
+  d(24, "west-pokot-mount-mtelo", "Mount Mtelo (Sekerr)", "hike", "The highest point in West Pokot, a demanding climb with views over the Kerio Valley.", {
+    duration: "Full day",
+    experiences: ["Mountain hiking", "Summit views"],
+  }),
+  d(24, "west-pokot-nasolot-national-reserve", "Nasolot National Reserve", "wildlife", "A quiet reserve on the Turkwel River with elephant, buffalo and open-plain game.", {
+    duration: "Half day",
+    experiences: ["Game viewing", "Birdwatching"],
+  }),
   d(25, "samburu-national-reserve", "Samburu National Reserve", "park", "Dry-country wildlife along the Ewaso Nyiro and the home of the Samburu Special Five.", {
     photo: `${t}/8/8f/Mt._Ololokwe_Samburu.jpg/1280px-Mt._Ololokwe_Samburu.jpg`,
     best: "Jun to Oct",
@@ -285,8 +314,15 @@ export const DESTINATIONS: Destination[] = [
   d(26, "transnzoia-saiwa-swamp", "Saiwa Swamp National Park", "park", "Kenya's smallest park, a papyrus swamp with boardwalks and sitatunga antelope.", {
     experiences: ["Boardwalk walk", "Sitatunga and otter spotting", "Birdwatching"],
   }),
+  d(27, "uasin-gishu-kesses-dam", "Kesses Dam", "lake", "A quiet reservoir south of Eldoret, fed by the Tarakwa and Nderugut rivers.", {
+    duration: "1 to 2 hrs",
+    experiences: ["Lakeside walk", "Birdwatching", "Fishing spots"],
+  }),
   d(28, "marakwet-kerio-valley", "Kerio Valley", "viewpoint", "The great rift escarpment dropping 1,500 m to the bush and river below.", {
     experiences: ["Escarpment viewpoints", "Scenic drive", "Photography"],
+  }),
+  d(28, "marakwet-rimoi", "Rimoi National Reserve", "park", "Kenya's smallest reserve, created for the elephants that cross the Kerio Valley.", {
+    experiences: ["Elephant watching", "Game drive", "Escarpment picnic"],
   }),
   d(28, "marakwet-iten", "Iten, Home of Champions", "town", "The high-altitude town where most of Kenya's distance runners train.", {
     entry: "Free",
@@ -299,6 +335,9 @@ export const DESTINATIONS: Destination[] = [
   d(30, "baringo-lake-bogoria", "Lake Bogoria", "lake", "Steaming geysers and hot springs on the shore of a flamingo-filled soda lake.", {
     photo: `${t}/5/57/Lake_Bogoria_2011.jpg/1920px-Lake_Bogoria_2011.jpg`,
     experiences: ["Geyser and hot springs", "Flamingo viewing", "Lakeside walk"],
+  }),
+  d(30, "baringo-kamnarok", "Lake Kamnarok National Reserve", "park", "A papyrus lake in the Kerio Valley, once thick with crocodiles.", {
+    experiences: ["Game drive", "Boating", "Escarpment views"],
   }),
   d(31, "laikipia-ol-pejeta", "Ol Pejeta Conservancy", "park", "Home of the last two northern white rhinos with chimps and the Big Five on the plains.", {
     photo: `${t}/1/14/OL_PEJETA_conservancy_%C3%A0_Nanyuki_au_Kenya_31.jpg/1280px-OL_PEJETA_conservancy_%C3%A0_Nanyuki_au_Kenya_31.jpg`,
@@ -321,6 +360,9 @@ export const DESTINATIONS: Destination[] = [
     duration: "Half day",
     experiences: ["Crater rim hike", "Rift Valley views", "Steam vents"],
   }),
+  d(32, "nakuru-menengai", "Menengai Crater", "viewpoint", "One of the largest craters in the world, looking down into a forested floor.", {
+    experiences: ["Crater viewpoint", "Horse riding", "Sunset drive"],
+  }),
   d(32, "nakuru-crescent-island", "Crescent Island, Lake Naivasha", "wildlife", "A walking safari island where giraffe and zebra share the path with you.", {
     experiences: ["Walking safari", "Boat ride across", "Birdwatching"],
   }),
@@ -336,6 +378,9 @@ export const DESTINATIONS: Destination[] = [
   d(33, "narok-naboisho", "Naboisho Conservancy", "park", "Community-run conservancy bordering the Mara with far fewer vehicles.", {
     photo: `${t}/9/9c/Hyena_zebras_foreground.jpg/1280px-Hyena_zebras_foreground.jpg`,
     experiences: ["Night game drive", "Walking safari", "Maasai-guided tracking"],
+  }),
+  d(33, "narok-loita-hills", "Loita Hills", "hike", "Forested highlands and open ridges, walked with Maasai guides.", {
+    experiences: ["Multi-day hike", "Maasai homestay", "Waterfall walks"],
   }),
   d(34, "kajiado-amboseli", "Amboseli National Park", "park", "Big-tusker elephants walking against the backdrop of Kilimanjaro.", {
     photo: `${t}/e/e1/Amboseli_National_Park_and_Mt._Kilimanjaro.jpg/1280px-Amboseli_National_Park_and_Mt._Kilimanjaro.jpg`,
@@ -361,6 +406,9 @@ export const DESTINATIONS: Destination[] = [
     photo: `${t}/c/c3/The_crying_stone_in_Ilesi_Kakamega%2C_Western_Kenya.jpg/1280px-The_crying_stone_in_Ilesi_Kakamega%2C_Western_Kenya.jpg`,
     entry: "Free",
     experiences: ["Cultural story", "Photo stop", "Village walk"],
+  }),
+  d(37, "kakamega-isecheno", "Isecheno Nature Reserve", "forest", "The quieter, southern half of the forest with research trails.", {
+    experiences: ["Forest trails", "Primate spotting", "Camping"],
   }),
   d(39, "bungoma-nabuyole", "Nabuyole Falls", "viewpoint", "The Nzoia river dropping over a wide ledge near Webuye.", {
     experiences: ["Falls viewpoint", "Riverside walk", "Photography"],
@@ -391,6 +439,10 @@ export const DESTINATIONS: Destination[] = [
   d(44, "migori-thimlich-ohinga", "Thimlich Ohinga", "historic", "A dry-stone walled settlement older than Great Zimbabwe and a UNESCO site.", {
     duration: "1 to 2 hrs",
     experiences: ["Guided ruins tour", "Archaeology talk", "Cultural visit"],
+  }),
+  d(44, "migori-muhuru-bay", "Lake Victoria Shoreline, Muhuru Bay", "beach", "Quiet fishing bays and papyrus on the lake's eastern shore.", {
+    entry: "Free",
+    experiences: ["Fishing with locals", "Birdwatching", "Boat ride"],
   }),
 
   // ------------------------------------------------------------ Nairobi ----
@@ -452,3 +504,51 @@ export const categoriesPresent = (): Category[] =>
 
 /** How many places the app itself carries, for the honest "and more in the app" lines. */
 export const APP_DESTINATION_COUNT = 188;
+
+/** The quieter, less-visited places the site leads with. */
+export const GEM_IDS: string[] = [
+  "kilifi-arabuko-sokoke",
+  "lamu-takwa-ruins",
+  "taita-lake-chala",
+  "kitui-south-kitui-national-reserve",
+  "nyandarua-lake-ol-bolossat",
+  "muranga-kanunga-falls",
+  "makueni-leviathan-cave",
+  "west-pokot-mount-mtelo",
+  "west-pokot-nasolot-national-reserve",
+  "marakwet-rimoi",
+  "baringo-kamnarok",
+  "narok-loita-hills",
+  "kakamega-isecheno",
+  "migori-muhuru-bay",
+  "uasin-gishu-kesses-dam",
+];
+
+/** The famous places most travellers start with. */
+export const POPULAR_IDS: string[] = [
+  "narok-maasai-mara",
+  "kajiado-amboseli",
+  "kwale-diani-beach",
+  "mombasa-fort-jesus",
+  "nakuru-hells-gate",
+  "nakuru-longonot",
+  "nakuru-lake-nakuru",
+  "laikipia-ol-pejeta",
+  "taita-tsavo-east",
+  "taita-tsavo-west",
+  "lamu-old-town",
+  "nyeri-mount-kenya-naromoru",
+  "mombasa-nyali-beach",
+  "nairobi-giraffe-centre",
+  "nakuru-crescent-island",
+  "laikipia-thomsons-falls",
+];
+
+export const gems = (): Destination[] =>
+  GEM_IDS.map((id) => destinationById(id)).filter((destination): destination is Destination => Boolean(destination));
+
+export const popular = (): Destination[] =>
+  POPULAR_IDS.map((id) => destinationById(id)).filter((destination): destination is Destination => Boolean(destination));
+
+export const gemsInCounty = (countyId: number): Destination[] =>
+  gems().filter((destination) => destination.countyId === countyId);
