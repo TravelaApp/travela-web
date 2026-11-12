@@ -119,7 +119,9 @@ See Cloudflare's [Turnstile hostname management documentation](https://developer
 
 ## Forms and email delivery
 
-The form endpoints are `POST /api/contact` and `POST /api/waitlist`. Both validate requests, check Turnstile tokens server-side, apply same-origin and rate-limit checks, and send notifications through Brevo to the support address configured by the site. The waitlist route also adds the address to the list named by `BREVO_WAITLIST_LIST_ID`, and still treats a failed list write as a successful signup, because the notification inbox is the source of truth. The Brevo API key stays on the server.
+The form endpoints are `POST /api/contact` and `POST /api/waitlist`. Both validate requests, check Turnstile tokens server-side, apply same-origin and rate-limit checks, and send notifications through Brevo to the support address configured by the site. The waitlist route also adds the address to the list named by `BREVO_WAITLIST_LIST_ID` and sends the person a branded confirmation email with the logo, a short welcome and the social links, both of which are best-effort: a failed list write or confirmation still counts as a signup, because the notification inbox is the source of truth. The Brevo API key stays on the server.
+
+The confirmation email's logo is loaded from `${NEXT_PUBLIC_SITE_URL}/app-icon.png`, so that variable must point at a host that resolves for the image to appear.
 
 If a challenge fails, first confirm that the browser hostname is allowed by the widget and that the public site key and server secret belong to that same widget. For delivery problems, check the Vercel function logs and Brevo sender configuration. Brevo's IP allow-list should remain disabled for changing serverless egress addresses.
 

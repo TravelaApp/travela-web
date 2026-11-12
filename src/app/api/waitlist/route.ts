@@ -1,5 +1,7 @@
+import { contact } from "@/data/site";
 import { addToWaitlist } from "@/lib/brevo";
-import { notificationsConfigured, sendNotification } from "@/lib/notify";
+import { notificationsConfigured, sendEmail, sendNotification } from "@/lib/notify";
+import { waitlistWelcome } from "@/lib/waitlist-welcome";
 import {
   createRateLimiter,
   guardJsonRequest,
@@ -27,7 +29,7 @@ function escapeHtml(value: string) {
   });
 }
 
-/** Adds a visitor to the launch waitlist and notifies support, with the visitor as the reply address. */
+/** Adds a visitor to the launch waitlist, notifies support and sends the visitor their branded confirmation. */
 export async function POST(request: Request) {
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
 
@@ -146,6 +148,16 @@ export async function POST(request: Request) {
   const added = await addToWaitlist({ email, name: name || undefined });
   if (!added) {
     console.error("Waitlist contact was not added to Brevo");
+  }
+
+  // The visitor gets a branded confirmation. The signup already stands, so a failure here is logged, not returned.
+  const welcomed = await sendEmail({
+    to: { email, name: name || undefined },
+    replyTo: { email: contact.email, name: "Travela" },
+    ...waitlistWelcome(name || undefined),
+  });
+  if (!welcomed) {
+    console.error("Waitlist welcome email was not delivered");
   }
 
   return jsonResponse({ ok: true });

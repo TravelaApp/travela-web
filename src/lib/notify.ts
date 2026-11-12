@@ -12,14 +12,16 @@ export function notificationsConfigured() {
   return Boolean(process.env.BREVO_API_KEY);
 }
 
-export interface Notification {
+export interface EmailMessage {
+  to: { email: string; name?: string };
   subject: string;
   text: string;
   html?: string;
   replyTo?: { email: string; name?: string };
 }
 
-export async function sendNotification({ subject, text, html, replyTo }: Notification) {
+/** The low-level Brevo send. Callers decide the recipient; the API key never leaves the server. */
+export async function sendEmail({ to, subject, text, html, replyTo }: EmailMessage) {
   const apiKey = process.env.BREVO_API_KEY;
   if (!apiKey) return false;
 
@@ -36,7 +38,7 @@ export async function sendNotification({ subject, text, html, replyTo }: Notific
       },
       body: JSON.stringify({
         sender: { name: senderName, email: senderEmail },
-        to: [{ email: contact.email }],
+        to: [to],
         ...(replyTo ? { replyTo } : {}),
         subject,
         textContent: text,
@@ -47,15 +49,27 @@ export async function sendNotification({ subject, text, html, replyTo }: Notific
     });
 
     if (!response.ok) {
-      console.error("Brevo rejected a website notification", { status: response.status });
+      console.error("Brevo rejected an email", { status: response.status });
       return false;
     }
 
     return true;
   } catch (error) {
-    console.error("Brevo notification request failed", {
+    console.error("Brevo email request failed", {
       errorType: error instanceof Error ? error.name : "UnknownError",
     });
     return false;
   }
+}
+
+export interface Notification {
+  subject: string;
+  text: string;
+  html?: string;
+  replyTo?: { email: string; name?: string };
+}
+
+/** Delivers a notification to the support inbox, which acts as the source of truth for every signup. */
+export async function sendNotification(message: Notification) {
+  return sendEmail({ ...message, to: { email: contact.email } });
 }
