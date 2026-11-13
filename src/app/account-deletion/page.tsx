@@ -37,11 +37,21 @@ export default function AccountDeletionPage() {
       <section className="mx-auto max-w-3xl px-5 pb-16">
         <div className="space-y-4">
           <div className="rounded-3xl border border-line bg-surface p-6 sm:p-8">
-            <h2 className="text-lg font-semibold">How to ask</h2>
+            <h2 className="text-lg font-semibold">Delete it from the app</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              There is no self-service delete button in the app today. In the app you can sign out and reset your
-              progress on the device from the settings screen, which clears what is stored on that phone. That does not
-              delete your account or the copy we hold. For that, contact us and ask us to delete the account.
+              Open Travela, go to Settings and choose <strong className="font-semibold text-ink">Delete account</strong>{" "}
+              under Account. It asks you to confirm, then erases your account and everything in the list below, and
+              signs you out. That is the quickest way, and it takes effect straight away. Signing out on its own does
+              not delete anything, and neither does resetting your progress, which only clears what is stored on that
+              phone.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-line bg-surface p-6 sm:p-8">
+            <h2 className="text-lg font-semibold">Or ask us to</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              If you would rather we did it, or you can no longer sign in to the app, contact us and ask us to delete
+              the account.
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <a
