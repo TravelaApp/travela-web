@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CATEGORIES, GEM_IDS, type Destination } from "@/data/destinations";
+import { CATEGORIES, GEM_IDS, primaryPhoto, type Destination } from "@/data/destinations";
 import { countyById } from "@/data/counties";
 
 /** A place, as a card. Without a convincing photo it falls back to the category tint rather than borrowing a picture of somewhere else. */
@@ -8,6 +8,7 @@ export function DestinationCard({ destination }: { destination: Destination }) {
   const meta = CATEGORIES[destination.category];
   const county = countyById(destination.countyId);
   const isGem = GEM_IDS.includes(destination.id);
+  const photo = primaryPhoto(destination);
 
   return (
     <Link
@@ -15,9 +16,9 @@ export function DestinationCard({ destination }: { destination: Destination }) {
       className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-surface transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_50px_-30px_rgba(17,17,17,0.45)]"
     >
       <div className="relative aspect-4/3 overflow-hidden">
-        {destination.photo ? (
+        {photo ? (
           <Image
-            src={destination.photo}
+            src={photo}
             alt={destination.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

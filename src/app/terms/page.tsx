@@ -74,6 +74,8 @@ const SECTIONS: LegalSection[] = [
       "The app and the website, and the content in them such as county pages, place notes, text, images and the Travela name and logo, belong to Travela or the people who license it to us. You may not use them except as these terms allow.",
       "When you upload photos or notes, they remain yours. You give us a licence to store, copy and show them back to you, and to make the technical copies needed to run the service, such as a backup. We do not sell them and we do not use them for advertising.",
       "If you upload a photo, you confirm that you have the right to share it and that it does not break anyone else's rights.",
+      "Travela does not own the photographs of the places shown in the app and on this website. They are used only to illustrate the destinations, and the copyright in each photograph stays with the photographer or other rights holder who created it. All rights in those photographs are reserved by their owners.",
+      "We claim no ownership of these pictures, and we do not sell or license them. If you are a photographer or rights holder and you believe a picture has been used without permission, or with the wrong credit, write to us and we will credit it properly or take it down promptly.",
     ],
   },
   {
@@ -162,6 +164,7 @@ const SECTIONS: LegalSection[] = [
       "Continuing to use Travela after a change means you accept the new terms. If you do not agree with them, please stop using the app.",
     ],
     bullets: [
+      "Version 2.1, 13 November 2026: added a copyright disclaimer confirming that Travela does not own the place photographs and that their owners reserve all rights.",
       "Version 2.0, 12 November 2026: this full set of terms replaced the earlier short summary, covering the licence, acceptable use, liability and governing law in full.",
       "Version 1.0: the first terms summary, published with the website.",
     ],
@@ -193,8 +196,8 @@ export default function TermsPage() {
         icon="book"
         title="Terms of Service"
         intro="The rules for using the Travela app and this website, written in plain language."
-        updated="12 November 2026"
-        version="2.0"
+        updated="13 November 2026"
+        version="2.1"
         sections={SECTIONS}
       />
       <AppCta />

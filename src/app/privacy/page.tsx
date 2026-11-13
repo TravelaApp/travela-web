@@ -89,6 +89,14 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
+    id: "photos-and-copyright",
+    heading: "Photos and copyright",
+    paragraphs: [
+      "Travela does not own the photographs of the places shown in the app and on this website. They are used only to illustrate the destinations, and the copyright in each photograph stays with the photographer or other rights holder who created it. All rights in those photographs are reserved by their owners.",
+      "We claim no ownership of these pictures, and we do not sell or license them. If you are a photographer or rights holder and you believe a picture has been used without permission, or with the wrong credit, write to us and we will credit it properly or take it down promptly.",
+    ],
+  },
+  {
     id: "cookies-and-analytics",
     heading: "Cookies and analytics",
     paragraphs: [
@@ -168,6 +176,7 @@ const SECTIONS: LegalSection[] = [
       "We may update this policy as the app and the law change. When we do, we change the version and the date at the top of this page and keep a short history below. If a change is significant we will make it clear on the site or in the app.",
     ],
     bullets: [
+      "Version 2.1, 13 November 2026: added a section on photos and copyright, confirming that Travela does not own the place photographs and that their owners reserve all rights.",
       "Version 2.0, 12 November 2026: this full policy replaced the earlier short summary, adding the sections on legal basis, retention, transfers and your rights.",
       "Version 1.0: the first privacy summary, published with the website.",
     ],
@@ -190,8 +199,8 @@ export default function PrivacyPage() {
         icon="shield"
         title="Privacy Policy"
         intro="How Travela handles your information, in plain language. This covers the Android app and this website."
-        updated="12 November 2026"
-        version="2.0"
+        updated="13 November 2026"
+        version="2.1"
         sections={SECTIONS}
       />
       <AppCta />

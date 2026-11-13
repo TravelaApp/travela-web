@@ -43,6 +43,8 @@ export interface Destination {
   category: Category;
   summary: string;
   photo?: string;
+  /** Several pictures of the same place, shown as a gallery. The first one leads. */
+  photos?: string[];
   best?: string;
   duration?: string;
   difficulty?: "Easy" | "Moderate" | "Challenging";
@@ -56,6 +58,9 @@ export interface Destination {
 
 const t = "https://thumb.wikimedia.org/wikipedia/commons/thumb";
 
+/** Pictures that ship with the site rather than being pulled from Wikimedia. */
+const gallery = (slug: string): string[] => [1, 2, 3, 4].map((n) => `/destinations/${slug}/${n}.jpg`);
+
 const d = (
   countyId: number,
   id: string,
@@ -68,7 +73,7 @@ const d = (
 export const DESTINATIONS: Destination[] = [
   // ---------------------------------------------------------------- Coast ----
   d(1, "mombasa-fort-jesus", "Fort Jesus", "historic", "A 16th-century Portuguese fort on the harbour with coral walls and cannons.", {
-    photo: `${t}/d/d4/Fort_Jesus%2C_2025_%2828%29.jpg/1280px-Fort_Jesus%2C_2025_%2828%29.jpg`,
+    photos: gallery("mombasa-fort-jesus"),
     duration: "2 to 3 hrs",
     difficulty: "Easy",
     access: "Walkable from Old Town",
@@ -91,7 +96,7 @@ export const DESTINATIONS: Destination[] = [
     experiences: ["Giraffe feeding", "Hippo pools", "Nature trail"],
   }),
   d(2, "kwale-diani-beach", "Diani Beach", "beach", "Repeatedly voted the best beach in Africa for its powder sand and warm shallows.", {
-    photo: `${t}/2/2d/Diani_Beach_Ukunda.jpg/1280px-Diani_Beach_Ukunda.jpg`,
+    photos: gallery("kwale-diani-beach"),
     best: "Dec to Mar",
     difficulty: "Easy",
     access: "Accessible by taxi or tuk-tuk from Ukunda",
@@ -205,6 +210,7 @@ export const DESTINATIONS: Destination[] = [
     experiences: ["Game drive", "Rhino tracking", "Camel ride", "Conservation tour"],
   }),
   d(12, "meru-ngare-ndare", "Ngare Ndare Forest", "forest", "An indigenous forest with a 450 m canopy walkway and blue pools below.", {
+    photos: gallery("meru-ngare-ndare"),
     experiences: ["Canopy walkway", "Swim in the pools", "Forest hike"],
   }),
   d(13, "tharaka-nithi-mount-kenya-chogoria", "Mount Kenya, Chogoria Route", "hike", "The most scenic approach to Point Lenana, starting from Chogoria on the eastern slopes.", {
@@ -259,6 +265,7 @@ export const DESTINATIONS: Destination[] = [
     experiences: ["White-water rafting", "Kayaking", "Camping", "River camping BBQ"],
   }),
   d(21, "muranga-ndakaini-dam", "Ndakaini Dam", "lake", "The reservoir that supplies most of Nairobi's water, set among tea farms in Gatanga.", {
+    photos: gallery("muranga-ndakaini-dam"),
     experiences: ["Dam viewpoint", "Scenic drive"],
   }),
   d(21, "muranga-kanunga-falls", "Kanunga Falls", "viewpoint", "A hidden waterfall near Ndakaini in Gatanga, on an easy trail through the farms.", {
@@ -270,7 +277,7 @@ export const DESTINATIONS: Destination[] = [
     experiences: ["Falls viewpoint", "Boat ride to the base", "Picnic"],
   }),
   d(22, "kiambu-paradise-lost", "Paradise Lost", "park", "A green gully with caves, a waterfall and boats on the dam.", {
-    photo: `${t}/a/ae/Paradise_Lost_waterfall.jpg/1280px-Paradise_Lost_waterfall.jpg`,
+    photos: gallery("kiambu-paradise-lost"),
     duration: "Half day",
     experiences: ["Cave walk", "Boat ride", "Picnic and barbecue"],
   }),
@@ -340,7 +347,7 @@ export const DESTINATIONS: Destination[] = [
     experiences: ["Game drive", "Boating", "Escarpment views"],
   }),
   d(31, "laikipia-ol-pejeta", "Ol Pejeta Conservancy", "park", "Home of the last two northern white rhinos with chimps and the Big Five on the plains.", {
-    photo: `${t}/1/14/OL_PEJETA_conservancy_%C3%A0_Nanyuki_au_Kenya_31.jpg/1280px-OL_PEJETA_conservancy_%C3%A0_Nanyuki_au_Kenya_31.jpg`,
+    photos: gallery("laikipia-ol-pejeta"),
     experiences: ["Rhino sanctuary", "Chimpanzee sanctuary", "Night game drive", "Lion tracking"],
   }),
   d(31, "laikipia-thomsons-falls", "Thomson's Falls", "viewpoint", "A 74 m waterfall dropping into the Rift Valley at Nyahururu.", {
@@ -473,10 +480,119 @@ export const DESTINATIONS: Destination[] = [
     entry: "Free",
     experiences: ["Souvenir shopping", "Bargaining practice", "Beadwork"],
   }),
+
+  // -------------------------------------- Hidden gems with their own galleries ----
+  d(3, "kilifi-the-cave-watamu", "The Cave, Watamu", "adventure", "A natural cave by the sea at Watamu, once used by fishermen and now a place to swim.", {
+    photos: gallery("kilifi-the-cave-watamu"),
+    duration: "1 to 2 hrs",
+    experiences: ["Cave swim", "Snorkelling", "Beach walk"],
+  }),
+  d(3, "kilifi-mida-creek", "Mida Creek", "wildlife", "A mangrove-lined tidal creek near Watamu, alive with wading birds and dhows.", {
+    photos: gallery("kilifi-mida-creek"),
+    experiences: ["Boardwalk through the mangroves", "Birdwatching", "Sunset dhow sail"],
+  }),
+  d(3, "kilifi-malindi", "Malindi", "town", "An old Swahili port town with a marine park, a Portuguese cross and an easy seafront.", {
+    photos: gallery("kilifi-malindi"),
+    experiences: ["Malindi Marine Park", "Vasco da Gama pillar", "Seafront walk"],
+  }),
+  d(2, "kwale-tiwi-african-pool", "Tiwi African Pool", "beach", "Rock pools and quiet sand on Tiwi beach, on the calm stretch south of Diani.", {
+    photos: gallery("kwale-tiwi-african-pool"),
+    entry: "Free",
+    experiences: ["Swimming in the pools", "Beach walks", "Snorkelling at low tide"],
+  }),
+  d(2, "kwale-kongo-river", "Kongo River", "beach", "The small river mouth at Diani where fresh water meets the reef at low tide.", {
+    photos: gallery("kwale-kongo-river"),
+    entry: "Free",
+    experiences: ["Beach walks", "Swimming", "Reef views"],
+  }),
+  d(42, "kisumu-bingo-beach", "Bingo Beach", "beach", "A lakeside beach on Lake Victoria with fishing boats, fresh tilapia and long sunsets.", {
+    photos: gallery("kisumu-bingo-beach"),
+    entry: "Free",
+    experiences: ["Fish market", "Boat rides", "Sunset views"],
+  }),
+  d(22, "kiambu-chania-falls", "Chania Falls", "viewpoint", "A waterfall on the Chania river at Thika, strongest after the long rains.", {
+    photos: gallery("kiambu-chania-falls"),
+    duration: "1 to 2 hrs",
+    experiences: ["Falls viewpoint", "Riverside walk", "Photography"],
+  }),
+  d(22, "kiambu-tigoni", "Tigoni", "viewpoint", "Tea and forest country above Limuru, green all year and cool even in January.", {
+    photos: gallery("kiambu-tigoni"),
+    entry: "Free",
+    experiences: ["Tea-farm drives", "Forest walks", "Country cafés"],
+  }),
+  d(22, "kiambu-kentmere-tigoni", "Kentmere, Tigoni", "viewpoint", "Old tea-farm country above Limuru, with green fields, forest and misty mornings.", {
+    photos: gallery("kiambu-kentmere-tigoni"),
+    duration: "Half day",
+    experiences: ["Farm walks", "Tea country views", "Picnic"],
+  }),
+  d(22, "kiambu-la-cascada", "La Cascada, Ruaka", "adventure", "A garden escape on the edge of Ruaka with pools, lawns and a relaxed lakeside feel.", {
+    photos: gallery("kiambu-la-cascada"),
+    duration: "2 to 3 hrs",
+    experiences: ["Swimming", "Lawn games", "Picnic"],
+  }),
+  d(21, "muranga-wanjii-power-station", "Wanjii Power Station", "viewpoint", "A small hydro station on the Maragua river, with a gorge and waterfall beside it.", {
+    photos: gallery("muranga-wanjii-power-station"),
+    duration: "1 to 2 hrs",
+    experiences: ["Waterfall view", "Gorge walk", "Photography"],
+  }),
+  d(19, "nyeri-aberdare-country-club", "Aberdare Country Club", "viewpoint", "A quiet highland retreat at the foot of the Aberdares, with open lawns and cool mountain air.", {
+    photos: gallery("nyeri-aberdare-country-club"),
+    duration: "Half day",
+    experiences: ["Lawn walks", "Aberdare views", "Afternoon tea"],
+  }),
+  d(19, "nyeri-chinga-dam", "Chinga Dam", "lake", "A small reservoir in the Nyeri highlands, ringed by farms and quiet water.", {
+    photos: gallery("nyeri-chinga-dam"),
+    entry: "Free",
+    experiences: ["Lakeside walk", "Birdwatching", "Fishing spots"],
+  }),
+  d(19, "nyeri-gura-camp", "Gura Camp", "adventure", "A riverside camp near Nyeri with rafting, ropes courses and space to pitch a tent.", {
+    photos: gallery("nyeri-gura-camp"),
+    difficulty: "Moderate",
+    experiences: ["Rafting", "Ropes course", "Camping"],
+  }),
+  d(19, "nyeri-tafaria-castle", "Tafaria Castle", "cultural", "A castle-styled arts retreat in the Nyeri highlands, with galleries and wide open views.", {
+    photos: gallery("nyeri-tafaria-castle"),
+    duration: "Half day",
+    experiences: ["Art galleries", "Highland views", "Afternoon tea"],
+  }),
+  d(19, "nyeri-wajee-nature-park", "Wajee Nature Park", "forest", "A small forest reserve at Mukurweini with nature trails, birds and quiet picnic spots.", {
+    photos: gallery("nyeri-wajee-nature-park"),
+    duration: "1 to 2 hrs",
+    experiences: ["Nature trail", "Birdwatching", "Picnic"],
+  }),
+  d(31, "laikipia-fairmont-mount-kenya", "Fairmont Mount Kenya Safari Club", "viewpoint", "A historic lodge on the slopes of Mount Kenya, with lawns that look straight at the peaks.", {
+    photos: gallery("laikipia-fairmont-mount-kenya"),
+    duration: "Half day",
+    experiences: ["Mountain views", "Gardens", "Fine dining"],
+  }),
+  d(12, "meru-nyambene-forest", "Nyambene Forest", "forest", "A misty indigenous forest on the Nyambene hills north of Meru town.", {
+    photos: gallery("meru-nyambene-forest"),
+    difficulty: "Moderate",
+    experiences: ["Forest walk", "Birdwatching", "Nature trails"],
+  }),
+  d(12, "meru-rhino-river-camp", "Rhino River Camp", "adventure", "A river camp on the edge of Meru National Park, a base for game drives and walks.", {
+    photos: gallery("meru-rhino-river-camp"),
+    experiences: ["Game drives", "Nature walks", "Riverside evenings"],
+  }),
+  d(12, "meru-root-north-farmshop", "Root North Farm Shop & Café", "market", "A farm shop and café at Timau, on the road up to Meru, for fresh produce and good coffee.", {
+    photos: gallery("meru-root-north-farmshop"),
+    entry: "Free",
+    experiences: ["Farm produce", "Coffee and cakes", "Road-trip stop"],
+  }),
+  d(13, "tharaka-nithi-lake-ellis", "Lake Ellis", "lake", "A high tarn on the eastern slopes of Mount Kenya, reached on the Chogoria side.", {
+    photos: gallery("tharaka-nithi-lake-ellis"),
+    best: "Jan to Mar and Aug to Oct",
+    difficulty: "Challenging",
+    experiences: ["High-altitude hike", "Fishing", "Camping"],
+  }),
 ];
 
 export const destinationById = (id: string): Destination | undefined =>
   DESTINATIONS.find((destination) => destination.id === id);
+
+/** The picture to lead with, whether a place carries a gallery or a single photo. */
+export const primaryPhoto = (destination?: Destination): string | undefined =>
+  destination?.photos?.[0] ?? destination?.photo;
 
 export const destinationsInCounty = (countyId: number): Destination[] =>
   DESTINATIONS.filter((destination) => destination.countyId === countyId);
@@ -505,23 +621,35 @@ export const categoriesPresent = (): Category[] =>
 /** How many places the app itself carries, for the honest "and more in the app" lines. */
 export const APP_DESTINATION_COUNT = 188;
 
-/** The quieter, less-visited places the site leads with. */
+/** The quieter, less-visited places the site leads with, ordered so the homepage rail opens on the coast. */
 export const GEM_IDS: string[] = [
-  "kilifi-arabuko-sokoke",
-  "lamu-takwa-ruins",
-  "taita-lake-chala",
-  "kitui-south-kitui-national-reserve",
-  "nyandarua-lake-ol-bolossat",
-  "muranga-kanunga-falls",
-  "makueni-leviathan-cave",
-  "west-pokot-mount-mtelo",
-  "west-pokot-nasolot-national-reserve",
-  "marakwet-rimoi",
-  "baringo-kamnarok",
-  "narok-loita-hills",
-  "kakamega-isecheno",
-  "migori-muhuru-bay",
-  "uasin-gishu-kesses-dam",
+  "kilifi-the-cave-watamu",
+  "kiambu-chania-falls",
+  "kwale-tiwi-african-pool",
+  "nyeri-tafaria-castle",
+  "kilifi-mida-creek",
+  "kilifi-malindi",
+  "kwale-diani-beach",
+  "kwale-kongo-river",
+  "kisumu-bingo-beach",
+  "kiambu-tigoni",
+  "kiambu-kentmere-tigoni",
+  "kiambu-la-cascada",
+  "kiambu-paradise-lost",
+  "muranga-ndakaini-dam",
+  "muranga-wanjii-power-station",
+  "nyeri-aberdare-country-club",
+  "nyeri-chinga-dam",
+  "nyeri-gura-camp",
+  "nyeri-wajee-nature-park",
+  "laikipia-fairmont-mount-kenya",
+  "laikipia-ol-pejeta",
+  "meru-ngare-ndare",
+  "meru-nyambene-forest",
+  "meru-rhino-river-camp",
+  "meru-root-north-farmshop",
+  "tharaka-nithi-lake-ellis",
+  "mombasa-fort-jesus",
 ];
 
 /** The famous places most travellers start with. */

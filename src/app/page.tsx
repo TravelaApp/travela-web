@@ -5,7 +5,7 @@ import { DestinationCard } from "@/components/DestinationCard";
 import { Icon } from "@/components/icons";
 import { SectionHeading, Stat } from "@/components/ui";
 import { COUNTIES, REGION_ORDER, countiesInRegion, regionCount } from "@/data/counties";
-import { APP_DESTINATION_COUNT, destinationById, gems } from "@/data/destinations";
+import { APP_DESTINATION_COUNT, destinationById, gems, primaryPhoto } from "@/data/destinations";
 import { badges, contact, download, features, levels, partner, site, stats } from "@/data/site";
 import { siteUrl } from "@/lib/site-url";
 
@@ -34,7 +34,7 @@ const FEATURED = [
 
 /** The homepage shows the shape of the app; the rest live on the features page. */
 const HIGHLIGHTS = features.slice(0, 6);
-const PHOTO_HIGHLIGHTS = FEATURED.filter((destination) => destination.photo).slice(0, 3);
+const PHOTO_HIGHLIGHTS = FEATURED.filter((destination) => primaryPhoto(destination)).slice(0, 3);
 
 /** The other half of the pitch: the quiet places most people drive straight past. */
 const GEMS = gems().slice(0, 4);
@@ -111,10 +111,10 @@ export default function HomePage() {
 
         <div className="relative mx-auto w-full max-w-[540px]">
           <div className="overflow-hidden rounded-[2rem] border border-line bg-surface shadow-[0_40px_80px_-55px_rgba(17,17,17,0.55)]">
-            {PHOTO_HIGHLIGHTS[0]?.photo && (
+            {primaryPhoto(PHOTO_HIGHLIGHTS[0]) && (
               <Link href={`/destinations/${PHOTO_HIGHLIGHTS[0].id}`} className="group relative block aspect-[1.12] overflow-hidden">
                 <Image
-                  src={PHOTO_HIGHLIGHTS[0].photo}
+                  src={primaryPhoto(PHOTO_HIGHLIGHTS[0])!}
                   alt={PHOTO_HIGHLIGHTS[0].name}
                   fill
                   priority
@@ -137,9 +137,9 @@ export default function HomePage() {
                   href={`/destinations/${destination.id}`}
                   className="group relative aspect-[1.35] overflow-hidden rounded-2xl bg-sand-deep"
                 >
-                  {destination.photo && (
+                  {primaryPhoto(destination) && (
                     <Image
-                      src={destination.photo}
+                      src={primaryPhoto(destination)!}
                       alt={destination.name}
                       fill
                       sizes="(max-width: 640px) 45vw, 250px"

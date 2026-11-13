@@ -7,7 +7,7 @@ import { DestinationCard } from "@/components/DestinationCard";
 import { Icon } from "@/components/icons";
 import { AppCta } from "@/components/ui";
 import { countyById } from "@/data/counties";
-import { CATEGORIES, DESTINATIONS, destinationById, destinationsInCounty } from "@/data/destinations";
+import { CATEGORIES, DESTINATIONS, destinationById, destinationsInCounty, primaryPhoto } from "@/data/destinations";
 
 export function generateStaticParams() {
   return DESTINATIONS.map((destination) => ({ id: destination.id }));
@@ -49,6 +49,8 @@ function DestinationDetail({ id }: { id: string }) {
   const category = CATEGORIES[destination.category];
   const county = countyById(destination.countyId);
   const nearby = destinationsInCounty(destination.countyId).filter((place) => place.id !== destination.id);
+  const photo = primaryPhoto(destination);
+  const galleryPhotos = destination.photos?.slice(1) ?? [];
 
   const facts = [
     { icon: "calendar" as const, label: "Best time", value: destination.best },
@@ -80,9 +82,9 @@ function DestinationDetail({ id }: { id: string }) {
 
       <section className="mx-auto max-w-6xl px-5 pt-6">
         <div className="relative aspect-16/9 overflow-hidden rounded-4xl border border-line bg-sand-deep sm:aspect-21/9">
-          {destination.photo ? (
+          {photo ? (
             <Image
-              src={destination.photo}
+              src={photo}
               alt={destination.name}
               fill
               sizes="(max-width: 1152px) 100vw, 1152px"
@@ -127,6 +129,28 @@ function DestinationDetail({ id }: { id: string }) {
         <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] sm:text-5xl">{destination.name}</h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{destination.summary}</p>
       </header>
+
+      {galleryPhotos.length > 0 && (
+        <section className="mx-auto max-w-6xl px-5 pt-10">
+          <h2 className="sr-only">More photos of {destination.name}</h2>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {galleryPhotos.map((item, index) => (
+              <div
+                key={item}
+                className="relative aspect-4/3 overflow-hidden rounded-3xl border border-line bg-sand-deep"
+              >
+                <Image
+                  src={item}
+                  alt={`${destination.name}, photo ${index + 2}`}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 360px"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-6xl px-5 py-12">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_0.6fr]">
