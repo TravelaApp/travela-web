@@ -119,7 +119,7 @@ export function DestinationExplorer() {
         <div className="mt-6 rounded-3xl border border-dashed border-line px-6 py-16 text-center">
           <p className="font-display text-xl font-semibold">Nothing matches that</p>
           <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted">
-            Try a county name or clear the filters. The app carries all 188 places so there may be more inside than are
+            Try a county name or clear the filters. The app carries all 209 places so there may be more inside than are
             shown here.
           </p>
         </div>

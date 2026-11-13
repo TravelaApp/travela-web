@@ -1,6 +1,6 @@
 /**
  * The app's own destination content, so the copy and photos match what a user sees in Travela.
- * The app carries the full list (188 places); the site carries highlights, so lists here are selections, not totals.
+ * The app carries the full list (209 places); the site carries highlights, so lists here are selections, not totals.
  */
 
 export type Category =
@@ -619,7 +619,7 @@ export const categoriesPresent = (): Category[] =>
   CATEGORY_ORDER.filter((category) => DESTINATIONS.some((destination) => destination.category === category));
 
 /** How many places the app itself carries, for the honest "and more in the app" lines. */
-export const APP_DESTINATION_COUNT = 188;
+export const APP_DESTINATION_COUNT = 209;
 
 /** The quieter, less-visited places the site leads with, ordered so the homepage rail opens on the coast. */
 export const GEM_IDS: string[] = [

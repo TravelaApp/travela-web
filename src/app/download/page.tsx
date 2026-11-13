@@ -35,7 +35,7 @@ const STEPS = [
 
 const GETS = [
   "All 47 counties with the reason to go",
-  "188 places with tips, timing and effort",
+  "209 places with tips, timing and effort",
   "Lists that open without a signal",
   "A passport, badges and shareable trip PDFs",
 ];

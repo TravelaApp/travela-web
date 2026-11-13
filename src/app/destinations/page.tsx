@@ -17,7 +17,7 @@ export default function DestinationsPage() {
         eyebrow="Destinations"
         icon="map"
         title="Find somewhere worth the drive"
-        intro="A selection of the places Travela features, from quiet corners to the famous names. The app carries all 188 places and keeps working without a signal."
+        intro="A selection of the places Travela features, from quiet corners to the famous names. The app carries all 209 places and keeps working without a signal."
       />
 
       <section className="mx-auto max-w-6xl px-5 pb-4">

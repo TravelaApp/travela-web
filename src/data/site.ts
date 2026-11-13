@@ -173,7 +173,7 @@ export const faqs: Faq[] = [
 
 export const stats = [
   { value: "47", label: "Counties covered" },
-  { value: "188", label: "Places in the app" },
+  { value: "209", label: "Places in the app" },
   { value: "6", label: "Levels to Kenya Completer" },
   { value: "0", label: "Places that need a signal" },
 ] as const;

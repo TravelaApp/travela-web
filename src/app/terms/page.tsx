@@ -14,7 +14,7 @@ const SECTIONS: LegalSection[] = [
     id: "who-we-are",
     heading: "Who we are",
     paragraphs: [
-      "Travela is a free travel app for Kenya. It covers all 47 counties and 188 places, and it keeps working when you lose signal.",
+      "Travela is a free travel app for Kenya. It covers all 47 counties and 209 places, and it keeps working when you lose signal.",
       `These terms are between you and Travela, based in ${contact.location}. You can reach us at ${contact.email} or on ${contact.phone}.`,
     ],
   },
@@ -23,7 +23,7 @@ const SECTIONS: LegalSection[] = [
     heading: "The agreement",
     paragraphs: [
       "By downloading the app, creating an account or using this website, you agree to these terms. If you do not agree with them, please do not use the app or the site.",
-      "These terms sit alongside our privacy policy, which explains how your data is handled. You can read it at travelaapp.vercel.app/privacy. Where the two touch on the same thing, this page is about using the app and the privacy policy is about your data.",
+      "These terms sit alongside our privacy policy, which explains how your data is handled. You can read it at travelaapp.co.ke/privacy. Where the two touch on the same thing, this page is about using the app and the privacy policy is about your data.",
     ],
   },
   {
