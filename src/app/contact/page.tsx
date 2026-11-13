@@ -46,20 +46,24 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <a
-            href={contact.phoneHref}
-            className="group rounded-3xl border border-line bg-surface p-6 transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_50px_-30px_rgba(17,17,17,0.45)]"
-          >
+          <div className="rounded-3xl border border-line bg-surface p-6">
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-leaf-soft text-leaf">
               <Icon name="phone" />
             </span>
             <h2 className="mt-4 text-base font-semibold">Customer service</h2>
-            <p className="mt-1.5 text-sm text-muted">{contact.phone}</p>
-            <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-ink">
-              Call the team
-              <Icon name="arrow" className="h-3.5 w-3.5" />
-            </p>
-          </a>
+            <a
+              href={`mailto:${contact.supportEmail}`}
+              className="mt-1.5 block break-all text-sm text-muted transition-colors hover:text-ink"
+            >
+              {contact.supportEmail}
+            </a>
+            <a
+              href={contact.phoneHref}
+              className="mt-1 block text-sm text-muted transition-colors hover:text-ink"
+            >
+              {contact.phone}
+            </a>
+          </div>
 
           <div className="rounded-3xl border border-line bg-surface p-6">
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-sand text-ink">

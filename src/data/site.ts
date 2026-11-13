@@ -8,7 +8,8 @@ export const site = {
 } as const;
 
 export const contact = {
-  email: "travelaapps@gmail.com",
+  email: "info@travelaapp.co.ke",
+  supportEmail: "support@travelaapp.co.ke",
   phone: "0714532213",
   phoneHref: "tel:+254714532213",
   location: "Nairobi, Kenya",

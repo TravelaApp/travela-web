@@ -83,9 +83,9 @@ export function Footer() {
           <h3 className="text-sm font-semibold">Customer service</h3>
           <ul className="mt-4 space-y-3 text-sm text-muted">
             <li>
-              <a href={`mailto:${contact.email}`} className="flex items-start gap-2 transition-colors hover:text-ink">
+              <a href={`mailto:${contact.supportEmail}`} className="flex items-start gap-2 transition-colors hover:text-ink">
                 <Icon name="mail" className="mt-0.5 h-4 w-4 shrink-0" />
-                {contact.email}
+                {contact.supportEmail}
               </a>
             </li>
             <li>
