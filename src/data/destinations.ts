@@ -1,6 +1,6 @@
 /**
  * The app's own destination content, so the copy and photos match what a user sees in Travela.
- * The app carries the full list (209 places); the site carries highlights, so lists here are selections, not totals.
+ * The app carries the full list (222 places); the site carries highlights, so lists here are selections, not totals.
  */
 
 export type Category =
@@ -59,7 +59,8 @@ export interface Destination {
 const t = "https://thumb.wikimedia.org/wikipedia/commons/thumb";
 
 /** Pictures that ship with the site rather than being pulled from Wikimedia. */
-const gallery = (slug: string): string[] => [1, 2, 3, 4].map((n) => `/destinations/${slug}/${n}.jpg`);
+const gallery = (slug: string, count = 4): string[] =>
+  Array.from({ length: count }, (_, i) => `/destinations/${slug}/${i + 1}.jpg`);
 
 const d = (
   countyId: number,
@@ -172,15 +173,6 @@ export const DESTINATIONS: Destination[] = [
     duration: "1 to 2 hrs",
     experiences: ["Watch the trading", "Camel viewing"],
   }),
-  d(8, "wajir-museum", "Wajir Museum", "museum", "A National Museums site showing the culture and poetry of Wajir's Somali pastoralists.", {
-    duration: "1 to 2 hrs",
-    experiences: ["Cultural exhibits", "Nomadic heritage"],
-  }),
-  d(9, "mandera-malka-mari-np", "Malka Mari National Park", "park", "Remote park on the Dawa river at the Ethiopian border, rich in dry-country wildlife.", {
-    best: "Jun to Oct",
-    duration: "Full day",
-    experiences: ["Game drive", "River views", "Birdwatching"],
-  }),
 
   // ------------------------------------------------------------- Eastern ----
   d(10, "marsabit-national-park", "Marsabit National Park", "park", "A misty forested mountain in the desert, with elephants and crater lakes.", {
@@ -219,6 +211,7 @@ export const DESTINATIONS: Destination[] = [
     experiences: ["Multi-day trek", "Gorges Valley", "Lake Michaelson"],
   }),
   d(14, "embu-camp-ndunda-falls", "Camp Ndunda Falls", "viewpoint", "A waterfall in Njukiri Forest near Embu town, with climbing and zip lines beside it.", {
+    photos: gallery("embu-camp-ndunda-falls"),
     experiences: ["Waterfall visit", "Rock climbing", "Zip lining"],
   }),
   d(15, "kitui-nzambani-rock", "Nzambani Rock", "viewpoint", "A towering granite outcrop near Chuluni that legend says grows if you walk around it.", {
@@ -234,6 +227,7 @@ export const DESTINATIONS: Destination[] = [
     experiences: ["Summit hike", "Game viewing", "Views to Kilimambogo"],
   }),
   d(16, "machakos-kituluni", "Kituluni Hill", "viewpoint", "The odd \"anti-gravity\" stretch of road where water appears to run uphill.", {
+    photos: gallery("machakos-kituluni", 1),
     entry: "Free",
     experiences: ["Roadside experiment", "Photo stop", "Local stories"],
   }),
@@ -269,6 +263,7 @@ export const DESTINATIONS: Destination[] = [
     experiences: ["Dam viewpoint", "Scenic drive"],
   }),
   d(21, "muranga-kanunga-falls", "Kanunga Falls", "viewpoint", "A hidden waterfall near Ndakaini in Gatanga, on an easy trail through the farms.", {
+    photos: gallery("muranga-kanunga-falls"),
     duration: "2 to 3 hrs",
     experiences: ["Waterfall hike", "Freshwater pools"],
   }),
@@ -466,17 +461,21 @@ export const DESTINATIONS: Destination[] = [
     experiences: ["Elephant feeding", "Adopt an orphan", "Rhino viewing"],
   }),
   d(47, "nairobi-giraffe-centre", "Giraffe Centre", "wildlife", "Feed endangered Rothschild giraffes from a raised platform.", {
+    photos: gallery("nairobi-giraffe-centre", 1),
     duration: "1 hr",
     experiences: ["Hand-feed giraffes", "Nature trail", "Education centre"],
   }),
   d(47, "nairobi-karen-blixen", "Karen Blixen Museum", "museum", "The farmhouse from Out of Africa, kept as it was in the 1920s.", {
+    photos: gallery("nairobi-karen-blixen", 1),
     duration: "1 to 2 hrs",
     experiences: ["House tour", "Gardens", "Coffee at the terrace"],
   }),
   d(47, "nairobi-karura-forest", "Karura Forest", "forest", "Fifty minutes of trails and waterfalls inside the city. Bring a bike.", {
+    photos: gallery("nairobi-karura-forest"),
     experiences: ["Cycling", "Forest walk", "Waterfall and caves", "Picnic"],
   }),
   d(47, "nairobi-maasai-market", "Maasai Market", "market", "Beadwork and carvings that move to a different spot each day of the week.", {
+    photos: gallery("nairobi-maasai-market", 1),
     entry: "Free",
     experiences: ["Souvenir shopping", "Bargaining practice", "Beadwork"],
   }),
@@ -585,6 +584,174 @@ export const DESTINATIONS: Destination[] = [
     difficulty: "Challenging",
     experiences: ["High-altitude hike", "Fishing", "Camping"],
   }),
+
+  // ------------------------ Places with their own photo folders ----
+  // Bundled pictures matched one folder to one place, copied to match the app.
+  d(19, "nyeri-paxtu", "Baden-Powell's Grave (Paxtu)", "historic", "The founder of the Scouts is buried facing Mount Kenya, as he asked.", {
+    photos: gallery("nyeri-paxtu", 1),
+    duration: "45 min",
+    experiences: ["History visit", "Museum", "Mountain views"],
+  }),
+  d(47, "nairobi-bomas", "Bomas of Kenya", "cultural", "Replicas of traditional homesteads plus a daily dance and acrobatics show.", {
+    photos: gallery("nairobi-bomas", 1),
+    duration: "2 hrs",
+    experiences: ["Traditional dances", "Homestead tour", "Craft market"],
+  }),
+  d(21, "muranga-kimakia-falls", "Kimakia Falls", "viewpoint", "A forest waterfall in the southern Aberdares at Gatanga, reached on a long hike.", {
+    photos: gallery("muranga-kimakia-falls", 1),
+    duration: "Half day",
+    experiences: ["Waterfall hike", "Birdwatching"],
+  }),
+  d(16, "machakos-peoples-park", "Machakos People's Park", "park", "A landscaped town park with a lake, walking paths and a weekend crowd.", {
+    photos: gallery("machakos-peoples-park", 1),
+    entry: "Free",
+    experiences: ["Lakeside walk", "Picnic", "Weekend food stalls"],
+  }),
+  d(16, "machakos-masinga-dam", "Masinga Dam", "lake", "The largest reservoir of the Seven Forks scheme and the top of the Tana's hydropower chain.", {
+    photos: gallery("machakos-masinga-dam", 1),
+    experiences: ["Dam viewpoint", "Birdwatching", "Scenic drive"],
+  }),
+  d(43, "homabay-mfangano", "Mfangano Island Rock Art", "cultural", "Ancient rock paintings at Mawanga cave, thousands of years old.", {
+    photos: gallery("homabay-mfangano", 1),
+    experiences: ["Rock art viewing", "Boat trip", "Island hike"],
+  }),
+  d(21, "muranga-mukurwe-wa-nyagathanga", "Mukurwe wa Nyagathanga", "cultural", "A sacred grove near Gaturi that tradition holds as the ancestral home of the Kikuyu.", {
+    photos: gallery("muranga-mukurwe-wa-nyagathanga", 1),
+    duration: "1 to 2 hrs",
+    experiences: ["Cultural visit", "Guided tour"],
+  }),
+  d(23, "turkana-nariokotome", "Nariokotome (Turkana Boy) Site", "historic", "Where the most complete early human skeleton was found in 1984.", {
+    photos: gallery("turkana-nariokotome", 1),
+    experiences: ["Guided site visit", "Fossil history", "Desert drive"],
+  }),
+  d(14, "embu-nthenge-njeru-falls", "Nthenge Njeru Falls", "viewpoint", "Twin waterfalls near Runyenjes, with two cascades framed by thick green vegetation.", {
+    photos: gallery("embu-nthenge-njeru-falls", 1),
+    experiences: ["Waterfall viewing", "Photography"],
+  }),
+  d(45, "kisii-tabaka-soapstone", "Tabaka Soapstone Carvings", "cultural", "The quarries and workshops where Kisii's carvers turn soft soapstone into figures.", {
+    photos: gallery("kisii-tabaka-soapstone", 1),
+    entry: "Free",
+    experiences: ["Watch the carvers", "Buy carvings", "Quarry visit"],
+  }),
+  d(47, "nairobi-arboretum", "Nairobi Arboretum", "forest", "A thirty-hectare tree collection in the middle of the city, with shaded paths and picnic lawns.", {
+    photos: gallery("nairobi-arboretum"),
+    duration: "1 to 2 hrs",
+    entry: "Free",
+    difficulty: "Easy",
+    experiences: ["Tree trails", "Birdwatching", "Picnic"],
+  }),
+  d(47, "nairobi-uhuru-park", "Uhuru Park", "park", "Nairobi's central public park: lawns, a boating lake and the skyline all around it.", {
+    photos: gallery("nairobi-uhuru-park"),
+    entry: "Free",
+    difficulty: "Easy",
+    experiences: ["Lakeside walk", "Boat rides", "City views"],
+  }),
+  d(47, "nairobi-safari-walk", "Nairobi Safari Walk", "wildlife", "A raised boardwalk over the Langata sanctuary, where you look down on lion, rhino and bongo.", {
+    photos: gallery("nairobi-safari-walk"),
+    duration: "1 to 2 hrs",
+    difficulty: "Easy",
+    experiences: ["Boardwalk", "Big cats", "Bongo antelope"],
+  }),
+  d(47, "nairobi-mamba-village", "Mamba Village", "adventure", "A crocodile farm and family park in Langata, with a large croc enclosure and a dam to walk around.", {
+    photos: gallery("nairobi-mamba-village"),
+    duration: "2 hrs",
+    experiences: ["Crocodile feeding", "Boat ride", "Gardens"],
+  }),
+  d(47, "nairobi-oloolua-nature-trail", "Oloolua Nature Trail", "forest", "A quiet forest walk at Karen with a cave, a river and a waterfall at the far end.", {
+    photos: gallery("nairobi-oloolua-nature-trail"),
+    duration: "1 to 2 hrs",
+    entry: "Free",
+    difficulty: "Easy",
+    experiences: ["Forest walk", "Cave", "Waterfall"],
+  }),
+  d(22, "kiambu-gatamaiyu-forest", "Gatamaiyu Forest", "forest", "Indigenous escarpment forest at Lari, with tall trees, streams and forest birds.", {
+    photos: gallery("kiambu-gatamaiyu-forest"),
+    duration: "Half day",
+    difficulty: "Moderate",
+    experiences: ["Forest walk", "Birdwatching", "Streams"],
+  }),
+  d(22, "kiambu-cianda-hike-trails", "Cianda Hike Trails", "hike", "Rolling walking trails in the Kiambu hills, a short drive out of Nairobi.", {
+    photos: gallery("kiambu-cianda-hike-trails"),
+    duration: "Half day",
+    difficulty: "Moderate",
+    experiences: ["Hill walk", "Farm views", "Picnic"],
+  }),
+  d(22, "kiambu-zambezi-forest", "Zambezi Forest", "forest", "A Kenya Forest Service reserve in Kiambu with shaded trails under tall trees.", {
+    photos: gallery("kiambu-zambezi-forest", 1),
+    duration: "1 to 2 hrs",
+    difficulty: "Easy",
+    experiences: ["Shaded trails", "Birdwatching"],
+  }),
+  d(22, "kiambu-wamathu-waterfall", "Wamathu Waterfall", "viewpoint", "A waterfall at Githunguri, reached on a short walk down from the road.", {
+    photos: gallery("kiambu-wamathu-waterfall"),
+    duration: "1 to 2 hrs",
+    difficulty: "Easy",
+    experiences: ["Waterfall visit", "Photography"],
+  }),
+  d(20, "kirinyaga-castle-forest", "Castle Forest", "forest", "An indigenous forest on the southern slopes of Mount Kenya, with tall trees, streams and colobus monkeys.", {
+    photos: gallery("kirinyaga-castle-forest"),
+    duration: "Half day",
+    difficulty: "Easy",
+    experiences: ["Forest walk", "Colobus monkeys", "Streams"],
+  }),
+  d(20, "kirinyaga-kangere-falls", "Kangere Falls", "viewpoint", "A waterfall in Kirinyaga reached through farmland and riverine bush.", {
+    photos: gallery("kirinyaga-kangere-falls"),
+    duration: "2 to 3 hrs",
+    difficulty: "Moderate",
+    experiences: ["Waterfall hike", "River pools"],
+  }),
+  d(20, "kirinyaga-njine-kabia-falls", "Njine Kabia Falls", "viewpoint", "A hidden Kirinyaga waterfall below a steep trail through riverine forest.", {
+    photos: gallery("kirinyaga-njine-kabia-falls"),
+    duration: "2 to 3 hrs",
+    difficulty: "Moderate",
+    experiences: ["Waterfall hike", "Photography"],
+  }),
+  d(20, "kirinyaga-mlango-pool", "Mlango Pool", "adventure", "A rock pool on a Kirinyaga river, cold and clear and good for a swim.", {
+    photos: gallery("kirinyaga-mlango-pool"),
+    entry: "Free",
+    experiences: ["Swimming", "Rock pools", "Picnic"],
+  }),
+  d(20, "kirinyaga-aquawoods-cabin", "Aquawoods Cabin", "adventure", "A riverside timber cabin in Kirinyaga, built for slow weekends beside the water.", {
+    photos: gallery("kirinyaga-aquawoods-cabin"),
+    duration: "Overnight",
+    experiences: ["Cabin stay", "River walks", "Bonfire"],
+  }),
+  d(21, "muranga-gorges", "Murang'a Gorges", "viewpoint", "A gorge cut by the Murang'a rivers, walked down a rough trail to the water.", {
+    photos: gallery("muranga-gorges", 1),
+    duration: "Half day",
+    difficulty: "Challenging",
+    experiences: ["Gorge walk", "River crossing", "Photography"],
+  }),
+  d(21, "muranga-river-mathioya", "River Mathioya", "adventure", "The Mathioya river running through Murang'a, with pools and rapids along its course.", {
+    photos: gallery("muranga-river-mathioya", 1),
+    experiences: ["Rafting", "River swim", "Riverside walk"],
+  }),
+  d(21, "muranga-thurasha-falls", "Thurasha Falls", "viewpoint", "A waterfall on a Murang'a river, hidden in a valley below the farms.", {
+    photos: gallery("muranga-thurasha-falls", 2),
+    duration: "2 to 3 hrs",
+    difficulty: "Moderate",
+    experiences: ["Waterfall visit", "Valley walk"],
+  }),
+  d(21, "muranga-jangwani-camp", "Jangwani Camp Site", "adventure", "A riverside campsite at Sagana, Murang'a, used as a base for rafting and river days.", {
+    photos: gallery("muranga-jangwani-camp", 1),
+    duration: "Overnight",
+    experiences: ["Camping", "Rafting", "River days"],
+  }),
+  d(16, "machakos-kitonga-garden-resort", "Kitonga Garden Resort", "adventure", "A garden resort outside Machakos town with lawns, pools and room for a family day out.", {
+    photos: gallery("machakos-kitonga-garden-resort", 1),
+    duration: "Half day",
+    experiences: ["Gardens", "Swimming", "Family day"],
+  }),
+  d(14, "embu-mt-kenya-riverside-retreat", "Mt. Kenya Riverside Retreat", "adventure", "A riverside retreat on the Embu side of Mount Kenya, with camping, cottages and cold river pools.", {
+    photos: gallery("embu-mt-kenya-riverside-retreat"),
+    duration: "Overnight",
+    experiences: ["River pools", "Camping", "Cottages"],
+  }),
+  d(14, "embu-winter-villa-resort", "Winter Villa Resort", "adventure", "A hillside resort near Embu with gardens, cottages and long views over the countryside.", {
+    photos: gallery("embu-winter-villa-resort"),
+    duration: "Overnight",
+    experiences: ["Gardens", "Cottages", "Country views"],
+  }),
 ];
 
 export const destinationById = (id: string): Destination | undefined =>
@@ -619,7 +786,7 @@ export const categoriesPresent = (): Category[] =>
   CATEGORY_ORDER.filter((category) => DESTINATIONS.some((destination) => destination.category === category));
 
 /** How many places the app itself carries, for the honest "and more in the app" lines. */
-export const APP_DESTINATION_COUNT = 209;
+export const APP_DESTINATION_COUNT = 222;
 
 /** The quieter, less-visited places the site leads with, ordered so the homepage rail opens on the coast. */
 export const GEM_IDS: string[] = [

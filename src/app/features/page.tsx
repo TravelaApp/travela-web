@@ -7,7 +7,7 @@ import { badges, features, levels } from "@/data/site";
 export const metadata: Metadata = {
   title: "Features",
   description:
-    "What Travela does. All 47 counties with offline destination content. A stamp passport and badges. Shareable trip PDFs and events near you.",
+    "What Travela does. All 45 counties with offline destination content. A stamp passport and badges. Shareable trip PDFs and events near you.",
 };
 
 export default function FeaturesPage() {

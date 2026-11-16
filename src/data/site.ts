@@ -2,9 +2,9 @@
 
 export const site = {
   name: "Travela",
-  tagline: "Explore Kenya's 47 counties",
+  tagline: "Explore Kenya's 45 counties",
   description:
-    "Travela is the travel app for Kenya. It covers all 47 counties and the places inside them and it keeps working when you lose signal.",
+    "Travela is the travel app for Kenya. It covers 45 counties and the places inside them and it keeps working when you lose signal.",
 } as const;
 
 export const contact = {
@@ -27,7 +27,7 @@ export const partner = {
   location: "ACS Plaza, Kilimani",
   website: "https://remaxsafaris.com/",
   description:
-    "Local tour guides for safaris and city tours. Trips are tailored to what you want to see, anywhere in the 47 counties.",
+    "Local tour guides for safaris and city tours. Trips are tailored to what you want to see, anywhere in the 45 counties.",
 } as const;
 
 /** The facts a person needs before the app lands on Google Play, all of them true today. */
@@ -71,7 +71,7 @@ export interface Feature {
 
 export const features: Feature[] = [
   {
-    title: "All 47 counties",
+    title: "All 45 counties",
     body: "A passport of the whole country with the reason each county is worth the trip.",
     icon: "map",
   },
@@ -127,7 +127,7 @@ export const badges = [
   { title: "High five", desc: "Visit 5 counties", icon: "stamp" as const },
   { title: "Double digits", desc: "Visit 10 counties", icon: "stamp" as const },
   { title: "Halfway there", desc: "Visit 25 counties", icon: "stamp" as const },
-  { title: "Kenya Completer", desc: "Visit all 47 counties", icon: "badge" as const },
+  { title: "Kenya Completer", desc: "Visit all 45 counties", icon: "badge" as const },
   { title: "Event goer", desc: "Attend 5 events", icon: "ticket" as const },
   { title: "Planner", desc: "Create 3 trips", icon: "route" as const },
   { title: "Trip complete", desc: "Finish your first trip", icon: "check" as const },
@@ -143,7 +143,7 @@ export interface Faq {
 export const faqs: Faq[] = [
   {
     q: "Which counties does Travela cover?",
-    a: "All 47. Every county gets its own page with what it is known for and the places inside it, plus the practical detail such as the best months to go, how long a visit takes and how hard the walk is.",
+    a: "All 45. Every county gets its own page with what it is known for and the places inside it, plus the practical detail such as the best months to go, how long a visit takes and how hard the walk is.",
   },
   {
     q: "Does it work without internet?",
@@ -172,8 +172,8 @@ export const faqs: Faq[] = [
 ];
 
 export const stats = [
-  { value: "47", label: "Counties covered" },
-  { value: "209", label: "Places in the app" },
+  { value: "45", label: "Counties covered" },
+  { value: "222", label: "Places in the app" },
   { value: "6", label: "Levels to Kenya Completer" },
   { value: "0", label: "Places that need a signal" },
 ] as const;

@@ -14,7 +14,7 @@ const SECTIONS: LegalSection[] = [
     id: "who-we-are",
     heading: "Who we are",
     paragraphs: [
-      "Travela is a free travel app for Kenya. It covers all 47 counties and 209 places, and it keeps working when you lose signal.",
+      "Travela is a free travel app for Kenya. It covers 45 counties and 222 places, and it keeps working when you lose signal.",
       `These terms are between you and Travela, based in ${contact.location}. You can reach us at ${contact.email} or on ${contact.phone}.`,
     ],
   },

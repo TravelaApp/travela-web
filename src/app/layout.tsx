@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  keywords: ["Kenya", "travel", "47 counties", "destinations", "safari", "Travela"],
+  keywords: ["Kenya", "travel", "45 counties", "destinations", "safari", "Travela"],
   openGraph: {
     type: "website",
     siteName: site.name,

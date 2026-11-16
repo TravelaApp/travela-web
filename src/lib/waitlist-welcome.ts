@@ -38,7 +38,7 @@ function socialLinks() {
 }
 
 const WAITING_FOR = [
-  "All 47 counties and 209 places",
+  "All 45 counties and 222 places",
   "Lists that open without a signal",
   "A passport, badges and shareable trip PDFs",
 ];

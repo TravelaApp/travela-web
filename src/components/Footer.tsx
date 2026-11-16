@@ -5,7 +5,7 @@ import { contact, site, socials } from "@/data/site";
 
 const EXPLORE = [
   { href: "/destinations", label: "Destinations" },
-  { href: "/counties", label: "The 47 counties" },
+  { href: "/counties", label: "The 45 counties" },
   { href: "/features", label: "What is inside" },
   { href: "/download", label: "Join the waitlist" },
 ] as const;
@@ -107,7 +107,7 @@ export function Footer() {
           <p>
             © {YEAR} Travela. Built in {contact.location}.
           </p>
-          <p>Made for Kenya&rsquo;s 47 counties.</p>
+          <p>Made for Kenya&rsquo;s 45 counties.</p>
         </div>
       </div>
     </footer>

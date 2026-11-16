@@ -252,7 +252,7 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16">
         <SectionHeading
-          title="Eight regions and 47 counties"
+          title="Eight regions and 45 counties"
           body="Browse by the part of the country you are heading to or search a county by name and capital town."
           action={
             <Link

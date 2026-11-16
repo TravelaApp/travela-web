@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 /** The card shown when the site is shared, built here so the copy stays in step with the site. */
-export const alt = "Travela is the free Android travel app for Kenya and all 47 counties";
+export const alt = "Travela is the free Android travel app for Kenya and all 45 counties";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -11,7 +11,7 @@ export const contentType = "image/png";
 const iconData = await readFile(join(process.cwd(), "public/app-icon.png"), "base64");
 const iconSrc = `data:image/png;base64,${iconData}`;
 
-const PILLS = ["Free on Android", "All 47 counties", "Works without a signal"];
+const PILLS = ["Free on Android", "All 45 counties", "Works without a signal"];
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -49,7 +49,7 @@ export default function OpenGraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: 22, fontWeight: 700, letterSpacing: 2, color: "#ff6b00" }}>
-            ALL 47 COUNTIES OF KENYA
+            ALL 45 COUNTIES OF KENYA
           </div>
           <div
             style={{
@@ -73,7 +73,7 @@ export default function OpenGraphImage() {
               color: "#5e6b63",
             }}
           >
-            The free Android travel app for Kenya. All 47 counties and the places inside them still open where the signal stops.
+            The free Android travel app for Kenya. All 45 counties and the places inside them still open where the signal stops.
           </div>
         </div>
 

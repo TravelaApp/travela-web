@@ -1,4 +1,4 @@
-/** The 47 counties of Kenya in the app's shape: `id` is the official county code and `knownFor` mirrors the app's passport. */
+/** The counties the app covers, in the app's shape: `id` is the official county code (Wajir and Mandera are omitted) and `knownFor` mirrors the app's passport. */
 
 export type Region =
   | "Coast"
@@ -42,8 +42,6 @@ export const COUNTIES: County[] = [
   { id: 5, name: "Lamu", capital: "Lamu", region: "Coast", knownFor: "Lamu Old Town and its dhows", photo: `${t}/6/6a/Above_view_of_the_town_of_Lamu.jpg/1280px-Above_view_of_the_town_of_Lamu.jpg` },
   { id: 6, name: "Taita-Taveta", capital: "Wundanyi", region: "Coast", knownFor: "The Tsavo parks and the Taita Hills", photo: `${t}/5/58/Mudanda_Rock_in_Tsavo_East_National_Park.jpg/1280px-Mudanda_Rock_in_Tsavo_East_National_Park.jpg` },
   { id: 7, name: "Garissa", capital: "Garissa", region: "North Eastern", knownFor: "Camel country and the Boni Forest", photo: `${t}/f/f9/Garissa_Mosque_-_panoramio.jpg/1280px-Garissa_Mosque_-_panoramio.jpg` },
-  { id: 8, name: "Wajir", capital: "Wajir", region: "North Eastern", knownFor: "Desert wells and Somali heritage", photo: `${t}/f/f3/Giraffes_of_Wajir_town.jpg/1280px-Giraffes_of_Wajir_town.jpg` },
-  { id: 9, name: "Mandera", capital: "Mandera", region: "North Eastern", knownFor: "Kenya's far north-east frontier" },
   { id: 10, name: "Marsabit", capital: "Marsabit", region: "Eastern", knownFor: "Lake Turkana shores and the Chalbi Desert", photo: `${t}/6/6c/Lake_Paradise.jpg/1280px-Lake_Paradise.jpg` },
   { id: 11, name: "Isiolo", capital: "Isiolo", region: "Eastern", knownFor: "Gateway to Samburu and Shaba reserves", photo: `${t}/d/d3/Shaba_National_Reserve%2C_Kenya.jpg/1280px-Shaba_National_Reserve%2C_Kenya.jpg` },
   { id: 12, name: "Meru", capital: "Meru", region: "Eastern", knownFor: "Mount Kenya slopes and miraa farms", photo: `${t}/c/c4/Meru_National_Park%2C_Kenya.jpg/1280px-Meru_National_Park%2C_Kenya.jpg` },
