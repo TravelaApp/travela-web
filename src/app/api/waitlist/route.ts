@@ -29,7 +29,6 @@ function escapeHtml(value: string) {
   });
 }
 
-/** Adds a visitor to the launch waitlist, notifies support and sends the visitor their branded confirmation. */
 export async function POST(request: Request) {
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
 

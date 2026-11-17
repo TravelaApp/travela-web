@@ -1,6 +1,5 @@
 import type { SVGProps } from "react";
 
-/** One small stroke icon set, drawn inline so there is no icon dependency and glyphs inherit the text colour. */
 export type IconName =
   | "map"
   | "offline"

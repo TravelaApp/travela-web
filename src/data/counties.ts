@@ -1,4 +1,4 @@
-/** The counties the app covers, in the app's shape: `id` is the official county code (Wajir and Mandera are omitted) and `knownFor` mirrors the app's passport. */
+// County list matches travela-app (45 counties; Wajir and Mandera omitted).
 
 export type Region =
   | "Coast"

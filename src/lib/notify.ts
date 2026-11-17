@@ -1,12 +1,6 @@
 import { contact } from "@/data/site";
 
-/**
- * Outbound mail for the site's own forms, sent through Brevo's HTTP API so the key stays on the server.
- *
- * Brevo's "Authorised IPs" must stay off: the outbound address changes (serverless egress or a home
- * connection), so a fixed allow-list would break the forms. Every route using this is behind the
- * Turnstile, same-origin and rate-limit checks in src/lib/security.ts.
- */
+// Outbound mail via Brevo (server-only). Keep Brevo authorised IPs off for serverless egress.
 
 export function notificationsConfigured() {
   return Boolean(process.env.BREVO_API_KEY);
@@ -20,7 +14,6 @@ export interface EmailMessage {
   replyTo?: { email: string; name?: string };
 }
 
-/** The low-level Brevo send. Callers decide the recipient; the API key never leaves the server. */
 export async function sendEmail({ to, subject, text, html, replyTo }: EmailMessage) {
   const apiKey = process.env.BREVO_API_KEY;
   if (!apiKey) return false;
@@ -69,7 +62,6 @@ export interface Notification {
   replyTo?: { email: string; name?: string };
 }
 
-/** Delivers a notification to the support inbox, which acts as the source of truth for every signup. */
 export async function sendNotification(message: Notification) {
   return sendEmail({ ...message, to: { email: contact.email } });
 }

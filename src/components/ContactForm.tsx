@@ -18,7 +18,6 @@ const TOPICS = [
   "Something else",
 ];
 
-/** Posts a message straight to support, so nobody has to open a mail client. */
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const { token, setToken, resetSignal, status, message, failed, submit } = useSecureForm("/api/contact");

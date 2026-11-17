@@ -1,2 +1,2 @@
-/** The site's public origin. Set NEXT_PUBLIC_SITE_URL to override it (e.g. on a preview deploy); otherwise the production domain. */
+// Production URL; override with NEXT_PUBLIC_SITE_URL on previews.
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://travelaapp.co.ke").replace(/\/+$/, "");

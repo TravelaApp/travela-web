@@ -1,9 +1,4 @@
-/**
- * Adds a signup to the launch waitlist contact list.
- *
- * This module is imported only by server route handlers, so the Brevo API key is
- * read from the server environment and never shipped to the browser.
- */
+// Server-only: Brevo waitlist list (see route handlers).
 export async function addToWaitlist(input: { email: string; name?: string }): Promise<boolean> {
   const apiKey = process.env.BREVO_API_KEY;
   const listId = Number(process.env.BREVO_WAITLIST_LIST_ID);

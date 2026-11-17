@@ -3,10 +3,8 @@
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/icons";
 
-/** How far down the page, in pixels, before the button shows itself. */
 const SHOW_AFTER = 600;
 
-/** A quiet back-to-top button that fades in after the first screen. */
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
 

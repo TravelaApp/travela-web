@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { SectionHeading } from "@/components/ui";
 
-/** The app captured on a phone. Screens are pre-sized to 640x1391; the row is laid out twice and slides one copy for a seamless loop (movement lives in globals.css). */
+// Screenshot size 640x1391; marquee duplicates SCREENS (animation in globals.css).
 const SCREEN_WIDTH = 640;
 const SCREEN_HEIGHT = 1391;
 

@@ -3,7 +3,6 @@ import { COUNTIES } from "@/data/counties";
 import { DESTINATIONS } from "@/data/destinations";
 import { siteUrl } from "@/lib/site-url";
 
-/** The fixed pages, in the order a visitor is most likely to need them. */
 const PAGES: Array<{ path: string; priority: number }> = [
   { path: "", priority: 1 },
   { path: "/download", priority: 0.9 },

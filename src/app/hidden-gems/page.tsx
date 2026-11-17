@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Quiet corners across Kenya that Travela highlights in the app, plus a Coast long-weekend line-up. Join the waitlist for early access on Android.",
 };
 
-/** Coast counties in the gem set — enough for a three-day sketch without leaving the shore. */
+// Coast gem ids for the long-weekend block below.
 const COAST_WEEKEND_IDS = [
   "kilifi-mida-creek",
   "kilifi-the-cave-watamu",
@@ -33,7 +33,7 @@ export default function HiddenGemsPage() {
         eyebrow="Hidden gems"
         icon="compass"
         title="The places worth leaving the main road"
-        intro="These are the quieter stops Travela surfaces in Discover — the ones that reward a detour. Read them here; plan and stamp them in the Android app once you are in early access."
+        intro="Quiet stops from the app's Hidden gems list. Read them here, then plan and stamp them in the Android app when you have early access."
       />
 
       <section className="mx-auto max-w-6xl px-5 pb-16">
@@ -43,15 +43,15 @@ export default function HiddenGemsPage() {
         />
         <ol className="mb-10 space-y-4 border-l-2 border-gold/40 pl-6 text-sm leading-relaxed text-muted">
           <li>
-            <span className="font-medium text-ink">Day 1 — Watamu and Mida Creek</span>. Paddle or walk the boardwalk,
+            <span className="font-medium text-ink">Day 1: Watamu and Mida Creek</span>. Paddle or walk the boardwalk,
             then duck into The Cave for lunch above the tide line.
           </li>
           <li>
-            <span className="font-medium text-ink">Day 2 — South coast</span>. The African Pool at Tiwi for a swim,
+            <span className="font-medium text-ink">Day 2: South coast</span>. The African Pool at Tiwi for a swim,
             then follow Kongo River where the forest meets the sand.
           </li>
           <li>
-            <span className="font-medium text-ink">Day 3 — Mombasa</span>. Fort Jesus for the history, then Nyali or
+            <span className="font-medium text-ink">Day 3: Mombasa</span>. Fort Jesus for the history, then Nyali or
             Diani depending on how much beach you still want.
           </li>
         </ol>
@@ -68,7 +68,7 @@ export default function HiddenGemsPage() {
       <section className="mx-auto max-w-6xl px-5 pb-16">
         <SectionHeading
           title="Every hidden gem in Travela"
-          body="The same set the app highlights under Hidden gems in Discover — all of them offline once installed."
+          body="The same set as Hidden gems in the app. All of them work offline once installed."
           action={
             <Link
               href="/destinations"

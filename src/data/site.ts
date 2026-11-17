@@ -1,4 +1,4 @@
-/** Everything the site says about the product: one source for contact details, feature copy and marketing claims, so nothing drifts from the app. */
+// Site copy and contact details (keep aligned with travela-app).
 
 export const site = {
   name: "Travela",
@@ -45,7 +45,6 @@ export const download = {
   accessLabel: "Closed testing on Android",
 } as const;
 
-/** Default end-of-page pitch: the website explores; the app is the product. */
 export const appCta = {
   eyebrow: "Early access",
   title: "The app is where the passport lives",
@@ -69,7 +68,6 @@ export function appCtaForCounty(countyName: string) {
   };
 }
 
-/** Shown on the download page for people who get a tester slot. */
 export const earlyTesterGets = [
   "All 222 places and 45 counties stored on your phone",
   "Trips with checklists and PDF export to share",
@@ -81,13 +79,12 @@ export const earlyTesterGets = [
 export const webVsApp = {
   siteTitle: "This website",
   siteBody:
-    "Read counties and places, compare options, and join the waitlist. Good for planning at a desk or on Wi‑Fi.",
+    "Read counties and places, compare options, and join the waitlist. Good for planning at a desk or on Wi-Fi.",
   appTitle: "The Travela app",
   appBody:
     "The full experience: offline lists, stamping, trips, events, search, and sync when you sign in. That is what we are shipping on Android.",
 } as const;
 
-/** Plain-language privacy, for the person using the app rather than for a lawyer. */
 export const privacy = [
   {
     icon: "shield" as const,
@@ -160,7 +157,7 @@ export const features: Feature[] = [
   },
 ];
 
-/** The app's real levelling, so the site does not promise a different ladder. */
+// XP thresholds match the app.
 export const levels = [
   { level: 1, title: "Newcomer", min: 0 },
   { level: 2, title: "Msafiri", min: 200 },

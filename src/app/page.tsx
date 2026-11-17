@@ -9,7 +9,6 @@ import { APP_DESTINATION_COUNT, destinationById, gems, primaryPhoto } from "@/da
 import { badges, contact, download, features, levels, partner, site, stats } from "@/data/site";
 import { siteUrl } from "@/lib/site-url";
 
-/** Tells a search engine this page is the home of a free Android app. */
 const appJsonLd = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
@@ -22,7 +21,6 @@ const appJsonLd = {
   publisher: { "@id": `${siteUrl}/#organization` },
 };
 
-/** A short line-up of the places travellers ask for most: two parks, a beach and a hike. */
 const FEATURED = [
   "narok-maasai-mara",
   "kajiado-amboseli",
@@ -32,11 +30,9 @@ const FEATURED = [
   .map((id) => destinationById(id))
   .filter((destination) => destination !== undefined);
 
-/** The homepage shows the shape of the app; the rest live on the features page. */
 const HIGHLIGHTS = features.slice(0, 6);
 const PHOTO_HIGHLIGHTS = FEATURED.filter((destination) => primaryPhoto(destination)).slice(0, 3);
 
-/** The other half of the pitch: the quiet places most people drive straight past. */
 const GEMS = gems().slice(0, 4);
 
 const INSTALL_FACTS = [

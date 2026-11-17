@@ -12,7 +12,6 @@ import { useSecureForm } from "@/lib/useSecureForm";
 const FIELD =
   "mt-2 min-h-12 w-full rounded-2xl border border-line bg-sand/50 px-4 text-sm outline-none transition-colors placeholder:text-muted/70 focus:border-ink";
 
-/** The launch waitlist: leave an email and hear the moment Travela is live on Google Play. */
 export function WaitlistForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const { token, setToken, resetSignal, status, message, failed, submit } =
@@ -30,11 +29,10 @@ export function WaitlistForm() {
         county: String(data.get("county") ?? ""),
         website: String(data.get("website") ?? ""),
       },
-      "You are on the list. We will email tester invites and the public Google Play launch — not spam.",
+      "You are on the list. We will email tester invites and the public Google Play launch, not spam.",
     );
 
     if (sent) {
-      // The one number that matters on this site: a signup that actually landed.
       track("Waitlist signup");
       formRef.current?.reset();
     }
@@ -65,7 +63,7 @@ export function WaitlistForm() {
     <div className="rounded-4xl border border-line bg-surface p-5 sm:p-6">
       <h2 className="text-xl font-semibold">Join the waitlist</h2>
       <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
-        Leave the Gmail you use on your phone. We email tester invites and the public launch — joining does not install
+        Leave the Gmail you use on your phone. We email tester invites and the public launch. Joining does not install
         the app by itself.
       </p>
 

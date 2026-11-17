@@ -8,7 +8,7 @@ import { contact, download, earlyTesterGets, socials, waitlistFaqs, webVsApp } f
 export const metadata: Metadata = {
   title: "Join the waitlist",
   description:
-    "Travela is in closed testing on Google Play. Join the waitlist for tester invites and the public launch — free Android app with offline places, trips and a county passport.",
+    "Travela is in closed testing on Google Play. Join the waitlist for tester invites and the public launch. Free Android app with offline places, trips and a county passport.",
 };
 
 const STEPS = [

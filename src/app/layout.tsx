@@ -8,7 +8,6 @@ import { contact, site, socials } from "@/data/site";
 import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-/** Outfit carries the headings and Inter the body; both are self-hosted variable fonts exposed as the CSS variables globals.css reads. */
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
@@ -52,7 +51,6 @@ export const viewport: Viewport = {
   themeColor: "#fbf7ee",
 };
 
-/** Structured data so search engines read the site as one product. */
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [

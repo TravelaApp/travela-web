@@ -14,7 +14,6 @@ const RATE_LIMIT = 4;
 const CHALLENGE_ACTION = "contact";
 const consume = createRateLimiter({ windowMs: RATE_WINDOW_MS, limit: RATE_LIMIT });
 
-/** Delivers a message from the contact page, with the sender as the reply address. */
 export async function POST(request: Request) {
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
 

@@ -1,13 +1,7 @@
 import { contact, site, socials } from "@/data/site";
 import { siteUrl } from "@/lib/site-url";
 
-/**
- * The branded email a person receives the moment they join the waitlist: logo, a short welcome,
- * what the app carries, the social links and how to reach us.
- *
- * Written with tables and inline styles because mail clients strip stylesheets, and the palette
- * matches the site: sand paper, ink card, orange accent.
- */
+// Waitlist confirmation email (inline HTML for mail clients).
 
 const SAND = "#fbf7ee";
 const INK = "#111111";
@@ -17,7 +11,6 @@ const MUTED = "#5e6b63";
 
 const FONT = "Arial,Helvetica,sans-serif";
 
-/** Names arrive from a form, so escape before they reach the markup. */
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, "&amp;")
@@ -27,7 +20,6 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#39;");
 }
 
-/** One pill per network, built from the same list the footer uses so nothing drifts. */
 function socialLinks() {
   return socials
     .map(

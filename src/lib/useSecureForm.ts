@@ -4,7 +4,6 @@ import { useCallback, useState } from "react";
 
 export type FormStatus = "idle" | "sending" | "sent";
 
-/** Holds the challenge token, posts the fields, and returns a message the person can act on. */
 export function useSecureForm(endpoint: string) {
   const [token, setToken] = useState("");
   const [resetSignal, setResetSignal] = useState(0);

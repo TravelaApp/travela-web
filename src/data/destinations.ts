@@ -1,7 +1,4 @@
-/**
- * The app's own destination content, so the copy and photos match what a user sees in Travela.
- * The app carries the full list (222 places); the site carries highlights, so lists here are selections, not totals.
- */
+// Destination content mirrored from travela-app (222 places).
 
 export type Category =
   | "park"
@@ -58,7 +55,6 @@ export interface Destination {
 
 const t = "https://thumb.wikimedia.org/wikipedia/commons/thumb";
 
-/** Pictures that ship with the site rather than being pulled from Wikimedia. */
 const gallery = (slug: string, count = 4): string[] =>
   Array.from({ length: count }, (_, i) => `/destinations/${slug}/${i + 1}.jpg`);
 
@@ -757,14 +753,12 @@ export const DESTINATIONS: Destination[] = [
 export const destinationById = (id: string): Destination | undefined =>
   DESTINATIONS.find((destination) => destination.id === id);
 
-/** The picture to lead with, whether a place carries a gallery or a single photo. */
 export const primaryPhoto = (destination?: Destination): string | undefined =>
   destination?.photos?.[0] ?? destination?.photo;
 
 export const destinationsInCounty = (countyId: number): Destination[] =>
   DESTINATIONS.filter((destination) => destination.countyId === countyId);
 
-/** The order categories appear in on the filters, most-used first. */
 export const CATEGORY_ORDER: Category[] = [
   "park",
   "wildlife",
@@ -785,10 +779,8 @@ export const CATEGORY_ORDER: Category[] = [
 export const categoriesPresent = (): Category[] =>
   CATEGORY_ORDER.filter((category) => DESTINATIONS.some((destination) => destination.category === category));
 
-/** How many places the app itself carries, for the honest "and more in the app" lines. */
 export const APP_DESTINATION_COUNT = 222;
 
-/** The quieter, less-visited places the site leads with, ordered so the homepage rail opens on the coast. */
 export const GEM_IDS: string[] = [
   "kilifi-the-cave-watamu",
   "kiambu-chania-falls",
@@ -819,7 +811,6 @@ export const GEM_IDS: string[] = [
   "mombasa-fort-jesus",
 ];
 
-/** The famous places most travellers start with. */
 export const POPULAR_IDS: string[] = [
   "narok-maasai-mara",
   "kajiado-amboseli",

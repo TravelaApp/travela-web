@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CATEGORIES, GEM_IDS, primaryPhoto, type Destination } from "@/data/destinations";
 import { countyById } from "@/data/counties";
 
-/** A place, as a card. Without a convincing photo it falls back to the category tint rather than borrowing a picture of somewhere else. */
+// Uses the category tint when this place has no photo.
 export function DestinationCard({ destination }: { destination: Destination }) {
   const meta = CATEGORIES[destination.category];
   const county = countyById(destination.countyId);

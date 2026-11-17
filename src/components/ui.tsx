@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import { Icon, type IconName } from "@/components/icons";
 import { appCta } from "@/data/site";
 
-/** A tinted call to action used at the end of most pages. */
 export function AppCta({
   eyebrow = appCta.eyebrow,
   title = appCta.title,
@@ -52,7 +51,6 @@ export function AppCta({
   );
 }
 
-/** The heading block every inner page opens with. */
 export function PageHeader({
   eyebrow,
   title,
