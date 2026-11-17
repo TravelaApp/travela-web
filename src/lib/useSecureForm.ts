@@ -27,7 +27,12 @@ export function useSecureForm(endpoint: string) {
       try {
         const response = await fetch(endpoint, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
+          cache: "no-store",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({ ...fields, turnstileToken: token }),
         });
         const result = (await response.json()) as { ok?: boolean; error?: string };

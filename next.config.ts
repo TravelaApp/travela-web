@@ -19,9 +19,9 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
-  `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""} https://challenges.cloudflare.com`,
+  `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""} https://challenges.cloudflare.com https://va.vercel-scripts.com`,
   "frame-src https://challenges.cloudflare.com",
-  `connect-src 'self'${isDevelopment ? " ws:" : ""} https://challenges.cloudflare.com`,
+  `connect-src 'self'${isDevelopment ? " ws:" : ""} https://challenges.cloudflare.com https://vitals.vercel-insights.com`,
 ].join("; ");
 
 const nextConfig: NextConfig = {

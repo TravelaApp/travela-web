@@ -6,6 +6,7 @@ import {
   isValidEmail,
   jsonResponse,
   readText,
+  safeEmailSubjectPart,
   verifyTurnstile,
 } from "@/lib/security";
 
@@ -13,6 +14,10 @@ const RATE_WINDOW_MS = 15 * 60 * 1_000;
 const RATE_LIMIT = 4;
 const CHALLENGE_ACTION = "contact";
 const consume = createRateLimiter({ windowMs: RATE_WINDOW_MS, limit: RATE_LIMIT });
+
+export function GET() {
+  return jsonResponse({ error: "Not found" }, 404);
+}
 
 export async function POST(request: Request) {
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
@@ -69,8 +74,11 @@ export async function POST(request: Request) {
     return jsonResponse({ error: "Verification expired. Please complete it again." }, 400);
   }
 
+  const safeTopic = topic ? safeEmailSubjectPart(topic, 80) : "";
+  const safeName = safeEmailSubjectPart(name, 80);
+
   const sent = await sendNotification({
-    subject: `${topic ? `[${topic}] ` : ""}Message from ${name}`,
+    subject: `${safeTopic ? `[${safeTopic}] ` : ""}Message from ${safeName}`,
     replyTo: { email, name },
     text: [
       "A message was submitted from the Travela website contact form.",

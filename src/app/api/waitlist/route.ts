@@ -1,32 +1,29 @@
+import { COUNTIES } from "@/data/counties";
 import { contact } from "@/data/site";
 import { addToWaitlist } from "@/lib/brevo";
 import { notificationsConfigured, sendEmail, sendNotification } from "@/lib/notify";
 import { waitlistWelcome } from "@/lib/waitlist-welcome";
 import {
   createRateLimiter,
+  escapeHtml,
   guardJsonRequest,
+  isAllowedCountyChoice,
   isValidEmail,
   jsonResponse,
   readText,
+  safeEmailSubjectPart,
   verifyTurnstile,
 } from "@/lib/security";
+
+const COUNTY_NAMES = new Set(COUNTIES.map((county) => county.name));
 
 const RATE_WINDOW_MS = 15 * 60 * 1_000;
 const RATE_LIMIT = 5;
 const CHALLENGE_ACTION = "waitlist";
 const consume = createRateLimiter({ windowMs: RATE_WINDOW_MS, limit: RATE_LIMIT });
 
-function escapeHtml(value: string) {
-  return value.replace(/[&<>"']/g, (character) => {
-    const entities: Record<string, string> = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    };
-    return entities[character];
-  });
+export function GET() {
+  return jsonResponse({ error: "Not found" }, 404);
 }
 
 export async function POST(request: Request) {
@@ -58,6 +55,7 @@ export async function POST(request: Request) {
     name === null ||
     !isValidEmail(email) ||
     county === null ||
+    !isAllowedCountyChoice(county, COUNTY_NAMES) ||
     token.length < 10 ||
     token.length > 2_048
   ) {
@@ -84,8 +82,10 @@ export async function POST(request: Request) {
   const safeEmail = escapeHtml(email);
   const safeCounty = escapeHtml(county || "Not provided");
 
+  const subjectWho = safeEmailSubjectPart(name || email, 120);
+
   const sent = await sendNotification({
-    subject: `Waitlist signup from ${name || email}`,
+    subject: `Waitlist signup from ${subjectWho}`,
     replyTo: { email, name: name || undefined },
     text: [
       "A new waitlist signup came in from the website.",

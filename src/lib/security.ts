@@ -8,9 +8,34 @@ export function jsonResponse(body: object, status = 200, extraHeaders?: HeadersI
     headers: {
       "Cache-Control": "no-store, max-age=0",
       "X-Content-Type-Options": "nosniff",
+      "X-Robots-Tag": "noindex, nofollow",
       ...extraHeaders,
     },
   });
+}
+
+export function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (character) => {
+    const entities: Record<string, string> = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    };
+    return entities[character];
+  });
+}
+
+/** Strip characters that must not appear in an email subject line. */
+export function safeEmailSubjectPart(value: string, maxLength: number) {
+  const cleaned = value.replace(/[\r\n\u0000-\u001f\u007f]/g, "").trim();
+  return cleaned.slice(0, maxLength);
+}
+
+export function isAllowedCountyChoice(value: string, countyNames: ReadonlySet<string>) {
+  if (!value) return true;
+  return countyNames.has(value);
 }
 
 /** Behind a proxy the real caller is the first hop, not the socket we see. */
@@ -120,6 +145,17 @@ export async function guardJsonRequest(
   { maxBytes = DEFAULT_MAX_BYTES }: { maxBytes?: number } = {},
 ): Promise<GuardResult> {
   if (!sameOrigin(request)) {
+    return {
+      ok: false,
+      response: jsonResponse(
+        { error: "This request could not be verified. Reload the page and try again." },
+        403,
+      ),
+    };
+  }
+
+  const fetchMode = request.headers.get("sec-fetch-mode");
+  if (process.env.NODE_ENV === "production" && fetchMode && fetchMode !== "cors") {
     return {
       ok: false,
       response: jsonResponse(
