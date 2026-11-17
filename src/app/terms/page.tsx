@@ -105,6 +105,20 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
+    id: "events-third-party",
+    heading: "Events and third-party listings",
+    paragraphs: [
+      "Event listings in Travela are gathered from independent third-party sources. Those sources include public websites, event organisers, venues, ticketing platforms, social posts and similar services that we do not own or control.",
+      "Travela does not organise, host, sponsor, sell tickets for, or guarantee any listed event unless we say so clearly in writing. We are a discovery and information service, not the event provider.",
+      "Event titles, descriptions, dates, times, venues, prices, images, logos, names and links may come from those third parties. Travela does not claim ownership of that material. Trademarks and copyrights in event content remain with their respective owners.",
+      "Information may be incomplete, outdated or wrong. Dates can change, events can be cancelled, and venues can move without us knowing immediately. The organiser's or venue's own page, ticket seller or official announcement is always the final word.",
+      "When you follow a link to book, buy a ticket or get more detail, you leave Travela and deal with that provider on their terms and policies, not ours. Travela is not responsible for what third parties promise, charge or deliver.",
+      "Listing an event is not an endorsement. We do not verify every organiser, and we do not guarantee that an event is safe, lawful or suitable for you.",
+      `If you are an organiser or rights holder and believe an event listing is wrong, misleading or uses your material without permission, contact ${contact.email}. We will review and, where appropriate, correct, attribute or remove the listing promptly.`,
+      "In plain terms: we help you find what might be on, but the third party running the event owns the details and is responsible for what actually happens.",
+    ],
+  },
+  {
     id: "availability-and-changes",
     heading: "Availability and changes to the app",
     paragraphs: [
@@ -164,6 +178,7 @@ const SECTIONS: LegalSection[] = [
       "Continuing to use Travela after a change means you accept the new terms. If you do not agree with them, please stop using the app.",
     ],
     bullets: [
+      "Version 2.2, 17 November 2026: added a section on events and third-party listings, including non-ownership of event content, no endorsement and organiser responsibility.",
       "Version 2.1, 13 November 2026: added a copyright disclaimer confirming that Travela does not own the place photographs and that their owners reserve all rights.",
       "Version 2.0, 12 November 2026: this full set of terms replaced the earlier short summary, covering the licence, acceptable use, liability and governing law in full.",
       "Version 1.0: the first terms summary, published with the website.",
@@ -196,8 +211,8 @@ export default function TermsPage() {
         icon="book"
         title="Terms of Service"
         intro="The rules for using the Travela app and this website, written in plain language."
-        updated="13 November 2026"
-        version="2.1"
+        updated="17 November 2026"
+        version="2.2"
         sections={SECTIONS}
       />
       <AppCta />

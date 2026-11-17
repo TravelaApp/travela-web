@@ -89,6 +89,16 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
+    id: "events-and-listings",
+    heading: "Event listings and third-party sources",
+    paragraphs: [
+      "Travela shows events that are found on or linked from third-party websites and organisers. We may store and display titles, dates, venues, short descriptions, links and sometimes images or thumbnails so you can discover what is on.",
+      "That event information is provided for discovery only. Travela does not claim to be the organiser, data controller for those third-party sites, or owner of their content. Copyright and trademarks in event listings stay with the organiser, venue or other rights holder.",
+      "We try to keep listings useful, but we cannot guarantee that every detail is current or accurate. If you book or attend through a third party, their privacy policy and terms apply to that transaction.",
+      `If you are an organiser and want a listing corrected or removed, or you have a privacy concern about event data we show, contact ${contact.email}.`,
+    ],
+  },
+  {
     id: "photos-and-copyright",
     heading: "Photos and copyright",
     paragraphs: [
@@ -176,6 +186,7 @@ const SECTIONS: LegalSection[] = [
       "We may update this policy as the app and the law change. When we do, we change the version and the date at the top of this page and keep a short history below. If a change is significant we will make it clear on the site or in the app.",
     ],
     bullets: [
+      "Version 2.2, 17 November 2026: added a section on event listings and third-party sources.",
       "Version 2.1, 13 November 2026: added a section on photos and copyright, confirming that Travela does not own the place photographs and that their owners reserve all rights.",
       "Version 2.0, 12 November 2026: this full policy replaced the earlier short summary, adding the sections on legal basis, retention, transfers and your rights.",
       "Version 1.0: the first privacy summary, published with the website.",
@@ -199,8 +210,8 @@ export default function PrivacyPage() {
         icon="shield"
         title="Privacy Policy"
         intro="How Travela handles your information, in plain language. This covers the Android app and this website."
-        updated="13 November 2026"
-        version="2.1"
+        updated="17 November 2026"
+        version="2.2"
         sections={SECTIONS}
       />
       <AppCta />

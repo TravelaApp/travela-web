@@ -85,6 +85,13 @@ function CountyDetail({ id }: { id: string }) {
             </div>
           )}
         </div>
+        <p className="mt-3 text-center text-xs leading-relaxed text-muted">
+          Photographs illustrate the county. Travela does not claim copyright in them; see our{" "}
+          <Link href="/terms#content-and-ip" className="font-semibold text-ink underline decoration-line/40">
+            Terms
+          </Link>
+          .
+        </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <span className="rounded-full border border-line bg-surface px-3 py-1 text-xs font-semibold">

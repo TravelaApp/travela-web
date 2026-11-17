@@ -105,6 +105,14 @@ function DestinationDetail({ id }: { id: string }) {
             </div>
           )}
         </div>
+        <p className="mt-3 text-center text-xs leading-relaxed text-muted">
+          Photographs illustrate the destination. Travela does not claim copyright in them; rights stay with the
+          photographer or rights holder. See our{" "}
+          <Link href="/terms#content-and-ip" className="font-semibold text-ink underline decoration-line/40">
+            Terms
+          </Link>
+          .
+        </p>
       </section>
 
       <header className="mx-auto max-w-6xl px-5 pt-9">
