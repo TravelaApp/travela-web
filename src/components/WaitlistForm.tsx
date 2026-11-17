@@ -30,7 +30,7 @@ export function WaitlistForm() {
         county: String(data.get("county") ?? ""),
         website: String(data.get("website") ?? ""),
       },
-      "You are on the list. We will email you the moment Travela is live on Google Play.",
+      "You are on the list. We will email tester invites and the public Google Play launch — not spam.",
     );
 
     if (sent) {
@@ -45,8 +45,8 @@ export function WaitlistForm() {
       <div className="rounded-4xl border border-line bg-surface p-5 sm:p-6">
         <h2 className="text-xl font-semibold">Join the waitlist</h2>
         <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
-          The online form is being prepared. Copy our address or call and we will let you know the moment Travela is
-          live on Google Play.
+          The online form is being prepared. Copy our address or call and we will add you for tester invites and the
+          public Google Play launch.
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <EmailButton label="Copy our email address" />
@@ -65,7 +65,8 @@ export function WaitlistForm() {
     <div className="rounded-4xl border border-line bg-surface p-5 sm:p-6">
       <h2 className="text-xl font-semibold">Join the waitlist</h2>
       <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
-        Leave an email address and we will tell you the moment Travela is live on Google Play.
+        Leave the Gmail you use on your phone. We email tester invites and the public launch — joining does not install
+        the app by itself.
       </p>
 
       <form ref={formRef} className="mt-4 space-y-3" onSubmit={handleSubmit}>
@@ -149,7 +150,11 @@ export function WaitlistForm() {
         </p>
 
         <p className="max-w-xl text-xs leading-relaxed text-muted">
-          We use these details only to tell you when Travela is live on Google Play.
+          We use these details for tester invites and the public launch only. Questions? See the{" "}
+          <a href="/download#faq" className="underline decoration-line underline-offset-4 hover:decoration-ink">
+            waitlist FAQ
+          </a>
+          .
         </p>
       </form>
     </div>

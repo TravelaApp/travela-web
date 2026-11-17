@@ -1,53 +1,47 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Icon } from "@/components/icons";
 import { AppCta, PageHeader, SectionHeading } from "@/components/ui";
-import { contact, socials } from "@/data/site";
+import { contact, download, earlyTesterGets, socials, waitlistFaqs, webVsApp } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Join the waitlist",
   description:
-    "Travela is coming to Google Play. Join the waitlist and we will email you the moment the Android app is live, free and built to keep working without a signal.",
+    "Travela is in closed testing on Google Play. Join the waitlist for tester invites and the public launch — free Android app with offline places, trips and a county passport.",
 };
 
 const STEPS = [
   {
     icon: "users" as const,
     title: "Join the waitlist",
-    body: "Leave your email above. That is all we need to hold your place for launch.",
+    body: "Leave your email. We use it only for launch and tester news, not marketing lists.",
   },
   {
     icon: "mail" as const,
-    title: "We email you at launch",
-    body: "The moment Travela goes live on Google Play, we send you the listing so you can install it in one tap.",
+    title: "We email when it is your turn",
+    body: "Tester slots go out as Play invites to the Gmail you use on your phone. Everyone else hears when the public listing is live.",
   },
   {
     icon: "download" as const,
     title: "Install from Google Play",
-    body: "No files to copy and no settings to change. Tap install and Android handles the rest.",
+    body: "Accept the testing invite or open the public listing. No APK files and no side-loading.",
   },
   {
     icon: "stamp" as const,
-    title: "Start stamping",
-    body: "Open a county and mark it visited. Your passport, experience and first badge all move at once.",
+    title: "Stamp in the app",
+    body: "Mark a county visited, build a trip, and save places offline. The website never holds your passport.",
   },
-];
-
-const GETS = [
-  "All 45 counties with the reason to go",
-  "222 places with tips, timing and effort",
-  "Lists that open without a signal",
-  "A passport, badges and shareable trip PDFs",
 ];
 
 export default function DownloadPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Join the waitlist"
+        eyebrow="Early access"
         icon="download"
-        title="Travela is coming to Google Play"
-        intro="Leave your email and we will tell you the moment the Android app is live on Google Play. It is free, quick to install and it keeps working where the signal stops."
+        title="Closed testing on Android"
+        intro="Travela is already on Google Play for testers while we finish the store listing. Join the waitlist for an invite or for the day the app opens to everyone. Free, offline-friendly, and built in Nairobi."
       />
 
       <section className="mx-auto max-w-6xl px-5 pb-16">
@@ -56,9 +50,9 @@ export default function DownloadPage() {
 
           <div className="space-y-4">
             <div className="rounded-4xl border border-line bg-surface p-7 sm:p-9">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-muted">What you get</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-muted">What early testers get</h2>
               <ul className="mt-5 space-y-3.5 text-sm">
-                {GETS.map((item) => (
+                {earlyTesterGets.map((item) => (
                   <li key={item} className="flex gap-3 text-muted">
                     <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-leaf" />
                     {item}
@@ -67,16 +61,31 @@ export default function DownloadPage() {
               </ul>
             </div>
 
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-3xl border border-line bg-sand-deep/50 p-6">
+                <h3 className="text-sm font-semibold">{webVsApp.siteTitle}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{webVsApp.siteBody}</p>
+              </div>
+              <div className="rounded-3xl border border-line bg-surface p-6 ring-1 ring-gold/25">
+                <h3 className="text-sm font-semibold">{webVsApp.appTitle}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{webVsApp.appBody}</p>
+              </div>
+            </div>
+
             <div className="rounded-4xl border border-line bg-sand-deep/50 p-7 sm:p-9">
               <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-muted">Launch facts</h2>
               <dl className="mt-5 space-y-3 text-sm">
                 <div className="flex items-center justify-between gap-4">
+                  <dt className="text-muted">Access today</dt>
+                  <dd className="text-right font-medium">{download.accessLabel}</dd>
+                </div>
+                <div className="flex items-center justify-between gap-4">
                   <dt className="text-muted">Cost</dt>
-                  <dd className="font-medium">Free</dd>
+                  <dd className="font-medium">{download.price}</dd>
                 </div>
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-muted">Requires</dt>
-                  <dd className="font-medium">Android 8.0 or newer</dd>
+                  <dd className="font-medium">{download.requirement}</dd>
                 </div>
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-muted">Adverts</dt>
@@ -85,8 +94,8 @@ export default function DownloadPage() {
               </dl>
 
               <p className="mt-6 border-t border-line pt-5 text-xs leading-relaxed text-muted">
-                The Google Play listing is being prepared, so there is no link to share yet. iPhone is not supported.
-                Follow{" "}
+                There is no public {download.store} link on this site yet. iPhone is not supported. Already testing?
+                Sign in with the same Google account that received the invite. Follow{" "}
                 {socials.map((social, index) => (
                   <span key={social.label}>
                     {index > 0 && " and "}
@@ -100,7 +109,7 @@ export default function DownloadPage() {
                     </a>
                   </span>
                 ))}{" "}
-                for the announcement.
+                for updates.
               </p>
             </div>
 
@@ -114,7 +123,7 @@ export default function DownloadPage() {
                 >
                   {contact.email}
                 </a>
-                . We will answer personally.
+                . Ask for a tester invite or help with a Play invite you already received.
               </p>
             </div>
           </div>
@@ -123,8 +132,8 @@ export default function DownloadPage() {
 
       <section className="mx-auto max-w-6xl px-5 pb-16">
         <SectionHeading
-          title="From the waitlist to your first stamp"
-          body="Four steps and none of them need a laptop."
+          title="From waitlist to first stamp"
+          body="Four steps. None of them need a laptop, and none of them install the app by themselves."
         />
 
         <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -141,6 +150,32 @@ export default function DownloadPage() {
             </li>
           ))}
         </ol>
+      </section>
+
+      <section id="faq" className="mx-auto max-w-6xl px-5 pb-8">
+        <SectionHeading
+          title="Waitlist and closed testing"
+          body="Short answers about the website, the app, and why there is no install button here yet."
+        />
+        <dl className="divide-y divide-line rounded-3xl border border-line bg-surface">
+          {waitlistFaqs.map((faq) => (
+            <div key={faq.q} className="px-6 py-5">
+              <dt className="text-base font-semibold">{faq.q}</dt>
+              <dd className="mt-3 text-sm leading-relaxed text-muted">{faq.a}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-6 text-sm text-muted">
+          More on data and privacy in{" "}
+          <Link href="/privacy#waitlist" className="underline decoration-line underline-offset-4 hover:decoration-ink">
+            Privacy
+          </Link>{" "}
+          and{" "}
+          <Link href="/terms#waitlist" className="underline decoration-line underline-offset-4 hover:decoration-ink">
+            Terms
+          </Link>
+          .
+        </p>
       </section>
 
       <AppCta />

@@ -7,6 +7,7 @@ import { DestinationCard } from "@/components/DestinationCard";
 import { Icon } from "@/components/icons";
 import { AppCta } from "@/components/ui";
 import { COUNTIES, countiesInRegion, countyById } from "@/data/counties";
+import { appCtaForCounty } from "@/data/site";
 import { APP_DESTINATION_COUNT, destinationsInCounty } from "@/data/destinations";
 
 export function generateStaticParams() {
@@ -160,7 +161,11 @@ function CountyDetail({ id }: { id: string }) {
         </section>
       )}
 
-      <AppCta />
+      <AppCta
+        {...appCtaForCounty(county.name)}
+        secondaryHref="/destinations"
+        secondaryLabel="Browse places"
+      />
     </>
   );
 }

@@ -1,14 +1,23 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Icon, type IconName } from "@/components/icons";
+import { appCta } from "@/data/site";
 
 /** A tinted call to action used at the end of most pages. */
 export function AppCta({
-  title = "Take the whole country with you",
-  body = "Travela is free to download and built to keep working when the signal does not.",
+  eyebrow = appCta.eyebrow,
+  title = appCta.title,
+  body = appCta.body,
+  primaryLabel = appCta.primaryLabel,
+  secondaryHref = appCta.secondaryHref,
+  secondaryLabel = appCta.secondaryLabel,
 }: {
+  eyebrow?: string;
   title?: string;
   body?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
 }) {
   return (
     <section className="mx-auto max-w-6xl px-5 py-16">
@@ -19,21 +28,22 @@ export function AppCta({
           style={{ background: "radial-gradient(circle, rgba(255,107,0,0.55), rgba(255,107,0,0) 70%)" }}
         />
         <div className="relative max-w-2xl">
-          <h2 className="text-3xl font-semibold sm:text-4xl">{title}</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold">{eyebrow}</p>
+          <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">{title}</h2>
           <p className="mt-4 text-base leading-relaxed text-white/70">{body}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/download"
               className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#e86000]"
             >
-              Join the waitlist
+              {primaryLabel}
               <Icon name="arrow" className="h-4 w-4" />
             </Link>
             <Link
-              href="/destinations"
+              href={secondaryHref}
               className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
-              Browse the places
+              {secondaryLabel}
             </Link>
           </div>
         </div>

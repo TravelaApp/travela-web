@@ -8,6 +8,7 @@ const PAGES: Array<{ path: string; priority: number }> = [
   { path: "", priority: 1 },
   { path: "/download", priority: 0.9 },
   { path: "/destinations", priority: 0.8 },
+  { path: "/hidden-gems", priority: 0.75 },
   { path: "/counties", priority: 0.8 },
   { path: "/features", priority: 0.7 },
   { path: "/about", priority: 0.6 },

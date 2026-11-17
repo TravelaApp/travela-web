@@ -128,6 +128,22 @@ export default function FeaturesPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-5 pb-16">
+        <SectionHeading
+          title="Website or app?"
+          body="Everything above lives in the Android app. This site is for reading and for joining the waitlist while we finish closed testing."
+          action={
+            <Link
+              href="/download#faq"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold transition-colors hover:border-ink"
+            >
+              Waitlist FAQ
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+          }
+        />
+      </section>
+
       <AppCta />
     </>
   );

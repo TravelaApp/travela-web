@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { DestinationCard } from "@/components/DestinationCard";
 import { DestinationExplorer } from "@/components/DestinationExplorer";
+import { Icon } from "@/components/icons";
 import { AppCta, PageHeader, SectionHeading } from "@/components/ui";
 import { gems, popular } from "@/data/destinations";
 
@@ -21,7 +23,19 @@ export default function DestinationsPage() {
       />
 
       <section className="mx-auto max-w-6xl px-5 pb-4">
-        <SectionHeading title="Hidden gems" body="The quieter, less-visited places worth a detour." />
+        <SectionHeading
+          title="Hidden gems"
+          body="The quieter, less-visited places worth a detour."
+          action={
+            <Link
+              href="/hidden-gems"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold transition-colors hover:border-ink"
+            >
+              Coast long weekend
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+          }
+        />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {gems().map((place) => (
             <DestinationCard key={place.id} destination={place} />

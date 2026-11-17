@@ -63,7 +63,7 @@ export default function HomePage() {
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-gold">
             <Icon name="compass" className="h-3.5 w-3.5" />
-            {site.tagline}
+            {download.accessLabel}
           </span>
 
           <h1 className="mt-6 text-4xl font-semibold leading-[1.05] sm:text-6xl">
@@ -73,8 +73,9 @@ export default function HomePage() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Travela is the travel app for Kenya. All {COUNTIES.length} counties and {APP_DESTINATION_COUNT} places
-            worth the detour live in your pocket and still open when the signal drops.
+            Explore counties and places here, then take the passport with you on Android. All {COUNTIES.length}{" "}
+            counties and {APP_DESTINATION_COUNT} places open offline in the app while we finish closed testing on{" "}
+            {download.store}.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
@@ -96,7 +97,7 @@ export default function HomePage() {
           <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted">
             <span className="inline-flex items-center gap-2">
               <Icon name="check" className="h-4 w-4 text-leaf" />
-              Free on Android
+              Free · {download.accessLabel}
             </span>
             <span className="inline-flex items-center gap-2">
               <Icon name="check" className="h-4 w-4 text-leaf" />
@@ -212,10 +213,10 @@ export default function HomePage() {
           body="The places most people drive past on the way somewhere else. Quiet, cheap and worth the detour."
           action={
             <Link
-              href="/destinations"
+              href="/hidden-gems"
               className="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold transition-colors hover:border-ink"
             >
-              See the hidden gems
+              Coast long weekend
               <Icon name="arrow" className="h-4 w-4" />
             </Link>
           }
@@ -405,12 +406,12 @@ export default function HomePage() {
             <div>
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold">
                 <Icon name="download" className="h-4 w-4" />
-                Launching on {download.store}
+                {download.accessLabel}
               </div>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Take the whole country with you</h2>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">The passport lives in the app</h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70">
-                Leave your email and we tell you the day the app lands on {download.store}. Every county, every place
-                and the whole passport, ready to work where the signal stops.
+                Join the waitlist for tester invites and the public {download.store} launch. Stamps, trips, badges and
+                offline lists stay on your phone, not on this website.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link

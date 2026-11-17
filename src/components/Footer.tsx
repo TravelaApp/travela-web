@@ -5,6 +5,7 @@ import { contact, site, socials } from "@/data/site";
 
 const EXPLORE = [
   { href: "/destinations", label: "Destinations" },
+  { href: "/hidden-gems", label: "Hidden gems" },
   { href: "/counties", label: "The 45 counties" },
   { href: "/features", label: "What is inside" },
   { href: "/download", label: "Join the waitlist" },
@@ -36,7 +37,9 @@ export function Footer() {
             />
             <span className="font-display text-xl font-semibold">Travela</span>
           </div>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">{site.tagline}. Places and events with a passport that fills up as you go.</p>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+            {site.tagline}. Explore here; stamp counties and plan trips in the Android app.
+          </p>
           <div className="mt-5 flex gap-2">
             {socials.map((social) => (
               <a
