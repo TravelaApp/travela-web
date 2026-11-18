@@ -13,6 +13,7 @@ const EXPLORE = [
 
 const COMPANY = [
   { href: "/about", label: "About Travela" },
+  { href: "/partners", label: "Partners" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },

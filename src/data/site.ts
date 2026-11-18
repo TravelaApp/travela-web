@@ -10,6 +10,8 @@ export const site = {
 export const contact = {
   email: "info@travelaapp.co.ke",
   supportEmail: "support@travelaapp.co.ke",
+  /** Travel, car hire and other partner enquiries */
+  partnersEmail: "admin@travelaapp.co.ke",
   phone: "0714532213",
   phoneHref: "tel:+254714532213",
   location: "Nairobi, Kenya",
@@ -20,15 +22,45 @@ export const socials = [
   { label: "TikTok", handle: "@travelaapp", url: "https://www.tiktok.com/@travelaapp" },
 ] as const;
 
-export const partner = {
-  name: "Remax Safaris",
-  logo: "/partners/remax-safaris.png",
-  contact: "0795723450",
-  location: "ACS Plaza, Kilimani",
-  website: "https://remaxsafaris.com/",
-  description:
-    "Local tour guides for safaris and city tours. Trips are tailored to what you want to see, anywhere in the 45 counties.",
+export interface PartnerListing {
+  name: string;
+  logo: string;
+  description: string;
+  website?: string;
+  contact?: string;
+  phoneHref?: string;
+  location?: string;
+}
+
+export const travelPartners: PartnerListing[] = [
+  {
+    name: "Remax Safaris",
+    logo: "/partners/remax-safaris.png",
+    contact: "0795723450",
+    phoneHref: "tel:+254795723450",
+    location: "ACS Plaza, Kilimani",
+    website: "https://remaxsafaris.com/",
+    description:
+      "Local tour guides for safaris and city tours. Trips are tailored to what you want to see, anywhere in the 45 counties.",
+  },
+];
+
+/** Car hire listings appear here as we onboard partners. */
+export const carHirePartners: PartnerListing[] = [];
+
+export const partnersPage = {
+  title: "Partners",
+  intro:
+    "Travela works with trusted operators across Kenya. Tour and safari partners appear in the app; car hire partners help travellers move between counties.",
+  carHireEmpty:
+    "We are onboarding car hire partners across Kenya. List your fleet, airport desk or self-drive service and we will reach out.",
+  onboardTitle: "Become a partner",
+  onboardBody:
+    "Tour operators, guides, car hire companies and experience providers are welcome. Email us or send the form and the team at admin@travelaapp.co.ke will reply.",
 } as const;
+
+/** @deprecated Use travelPartners[0] — kept for older imports */
+export const partner = travelPartners[0];
 
 /**
  * Install facts and launch mode. Flip `mode` to `play` and set `playUrl` when the public listing is live.

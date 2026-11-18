@@ -11,6 +11,7 @@ const PAGES: Array<{ path: string; priority: number }> = [
   { path: "/counties", priority: 0.8 },
   { path: "/features", priority: 0.7 },
   { path: "/about", priority: 0.6 },
+  { path: "/partners", priority: 0.65 },
   { path: "/contact", priority: 0.6 },
   { path: "/privacy", priority: 0.3 },
   { path: "/terms", priority: 0.3 },

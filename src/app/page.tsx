@@ -6,7 +6,7 @@ import { Icon } from "@/components/icons";
 import { SectionHeading, Stat } from "@/components/ui";
 import { COUNTIES, REGION_ORDER, countiesInRegion, regionCount } from "@/data/counties";
 import { APP_DESTINATION_COUNT, destinationById, gems, primaryPhoto } from "@/data/destinations";
-import { badges, contact, download, features, levels, partner, site, stats } from "@/data/site";
+import { badges, contact, download, features, levels, partner, site, stats, travelPartners } from "@/data/site";
 import { siteUrl } from "@/lib/site-url";
 
 const appJsonLd = {
@@ -339,55 +339,41 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16">
-        <div className="grid items-center gap-8 rounded-4xl border border-line bg-surface p-7 sm:p-10 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid items-center gap-8 rounded-4xl border border-line bg-surface p-7 sm:p-10 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold">
               <Icon name="users" className="h-4 w-4" />
-              Travel partner
+              Partners
             </div>
-            <div className="mt-4 flex items-center gap-3">
-              <Image
-                src={partner.logo}
-                alt={`${partner.name} logo`}
-                width={48}
-                height={48}
-                className="h-12 w-12 rounded-2xl object-contain ring-1 ring-line"
-              />
-              <h2 className="text-2xl font-semibold">{partner.name}</h2>
-            </div>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">{partner.description}</p>
+            <h2 className="mt-4 text-2xl font-semibold">Travel and car hire, onboarded carefully</h2>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
+              Tour operators and car hire partners help travellers move between counties. We feature trusted names like{" "}
+              {travelPartners.map((p) => p.name).join(" and ")} and grow the list through{" "}
+              {contact.partnersEmail}.
+            </p>
+            <Link
+              href="/partners"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e86000]"
+            >
+              View partners
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
           </div>
 
-          <dl className="space-y-3 text-sm">
-            <div className="flex items-center gap-3">
-              <Icon name="phone" className="h-4 w-4 shrink-0 text-muted" />
-              <dt className="sr-only">Phone</dt>
-              <dd>
-                <a href="tel:+254795723450" className="transition-colors hover:text-ink">
-                  {partner.contact}
-                </a>
-              </dd>
+          <div className="flex items-center gap-4 rounded-3xl border border-line bg-sand/50 p-5">
+            <Image
+              src={partner.logo}
+              alt=""
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-2xl object-contain ring-1 ring-line"
+            />
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">Featured travel partner</p>
+              <p className="mt-1 text-lg font-semibold">{partner.name}</p>
+              <p className="mt-1 text-sm text-muted">{partner.location}</p>
             </div>
-            <div className="flex items-center gap-3">
-              <Icon name="pin" className="h-4 w-4 shrink-0 text-muted" />
-              <dt className="sr-only">Location</dt>
-              <dd>{partner.location}</dd>
-            </div>
-            <div className="flex items-center gap-3">
-              <Icon name="external" className="h-4 w-4 shrink-0 text-muted" />
-              <dt className="sr-only">Website</dt>
-              <dd>
-                <a
-                  href={partner.website}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="underline decoration-line underline-offset-4 transition-colors hover:decoration-ink"
-                >
-                  remaxsafaris.com
-                </a>
-              </dd>
-            </div>
-          </dl>
+          </div>
         </div>
       </section>
 
