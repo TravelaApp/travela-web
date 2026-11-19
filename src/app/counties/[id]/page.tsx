@@ -5,10 +5,12 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { DestinationCard } from "@/components/DestinationCard";
 import { Icon } from "@/components/icons";
+import { JsonLd } from "@/components/JsonLd";
 import { AppCta } from "@/components/ui";
 import { COUNTIES, countiesInRegion, countyById } from "@/data/counties";
 import { appCtaForCounty } from "@/data/site";
 import { APP_DESTINATION_COUNT, destinationsInCounty } from "@/data/destinations";
+import { breadcrumbListJsonLd, countyAreaJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return COUNTIES.map((county) => ({ id: String(county.id) }));
@@ -20,10 +22,15 @@ export async function generateMetadata({ params }: PageProps<"/counties/[id]">):
 
   if (!county) return { title: "County not found" };
 
-  return {
-    title: `${county.name} County`,
-    description: `${county.name} in the ${county.region} region of Kenya, capital ${county.capital}. ${county.knownFor}.`,
-  };
+  const description = `Things to do in ${county.name} County, Kenya — capital ${county.capital}, ${county.region} region. ${county.knownFor}. Places and trips in the Travela app.`;
+
+  return pageMetadata({
+    path: `/counties/${county.id}`,
+    title: `${county.name} County — travel guide`,
+    description,
+    image: county.photo,
+    imageAlt: `${county.name} County, Kenya`,
+  });
 }
 
 export default function CountyPage({ params }: PageProps<"/counties/[id]">) {
@@ -53,10 +60,19 @@ function CountyDetail({ id }: { id: string }) {
   const places = destinationsInCounty(county.id);
   const neighbours = countiesInRegion(county.region).filter((item) => item.id !== county.id);
 
+  const breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "Counties", path: "/counties" },
+    { name: county.name, path: `/counties/${county.id}` },
+  ];
+
   return (
     <>
+      <JsonLd
+        data={jsonLdGraph(breadcrumbListJsonLd(breadcrumbs), countyAreaJsonLd(county, places.length))}
+      />
       <section className="mx-auto max-w-6xl px-5 pt-8">
-        <nav className="flex flex-wrap items-center gap-2 text-sm text-muted">
+        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-muted">
           <Link href="/counties" className="transition-colors hover:text-ink">
             Counties
           </Link>

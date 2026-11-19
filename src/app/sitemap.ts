@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { COUNTIES } from "@/data/counties";
 import { DESTINATIONS } from "@/data/destinations";
+import { siteContentUpdated } from "@/lib/seo";
 import { siteUrl } from "@/lib/site-url";
 
 const PAGES: Array<{ path: string; priority: number }> = [
@@ -19,7 +20,7 @@ const PAGES: Array<{ path: string; priority: number }> = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = siteContentUpdated;
 
   return [
     ...PAGES.map(({ path, priority }) => ({

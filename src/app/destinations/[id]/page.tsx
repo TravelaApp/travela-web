@@ -5,10 +5,17 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { DestinationCard } from "@/components/DestinationCard";
 import { Icon } from "@/components/icons";
+import { JsonLd } from "@/components/JsonLd";
 import { AppCta } from "@/components/ui";
 import { countyById } from "@/data/counties";
 import { appCtaForPlace } from "@/data/site";
 import { CATEGORIES, DESTINATIONS, destinationById, destinationsInCounty, primaryPhoto } from "@/data/destinations";
+import {
+  breadcrumbListJsonLd,
+  destinationPlaceJsonLd,
+  jsonLdGraph,
+  pageMetadata,
+} from "@/lib/seo";
 
 export function generateStaticParams() {
   return DESTINATIONS.map((destination) => ({ id: destination.id }));
@@ -20,7 +27,20 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[id]
 
   if (!destination) return { title: "Place not found" };
 
-  return { title: destination.name, description: destination.summary };
+  const county = countyById(destination.countyId);
+  const description = destination.summary;
+  const title = county
+    ? `${destination.name}, ${county.name} County — Kenya`
+    : `${destination.name} — Kenya`;
+
+  return pageMetadata({
+    path: `/destinations/${destination.id}`,
+    title,
+    description,
+    image: primaryPhoto(destination),
+    imageAlt: destination.name,
+    type: "article",
+  });
 }
 
 export default function DestinationPage({ params }: PageProps<"/destinations/[id]">) {
@@ -61,10 +81,23 @@ function DestinationDetail({ id }: { id: string }) {
     { icon: "route" as const, label: "Getting there", value: destination.access },
   ].filter((fact) => fact.value);
 
+  const breadcrumbs: { name: string; path: string }[] = [
+    { name: "Home", path: "/" },
+    { name: "Destinations", path: "/destinations" },
+  ];
+  if (county) breadcrumbs.push({ name: county.name, path: `/counties/${county.id}` });
+  breadcrumbs.push({ name: destination.name, path: `/destinations/${destination.id}` });
+
   return (
     <>
+      <JsonLd
+        data={jsonLdGraph(
+          breadcrumbListJsonLd(breadcrumbs),
+          destinationPlaceJsonLd(destination, county),
+        )}
+      />
       <section className="mx-auto max-w-6xl px-5 pt-8">
-        <nav className="flex flex-wrap items-center gap-2 text-sm text-muted">
+        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-muted">
           <Link href="/destinations" className="transition-colors hover:text-ink">
             Destinations
           </Link>
